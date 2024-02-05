@@ -6,7 +6,8 @@
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
         "ANDROID_SDK_ROOT": "$ANDROID_HOME",
-        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
+        "ANDROID_NDK_PATH": "$ANDROID_HOME/ndk/ndk",
+        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_PATH"
     },
     "options": {
         "platform": {

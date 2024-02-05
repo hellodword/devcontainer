@@ -58,6 +58,11 @@ export JAVA_HOME=$(dirname $(dirname $(update-alternatives --list javac 2>&1 | h
 # Download the platform tools.
 yes | sdkmanager "${PACKAGES[@]}"
 
+if [ -d "$ANDROID_HOME/ndk" ]; then
+    NDK="$(find "$ANDROID_HOME/ndk" -maxdepth 1 -mindepth 1 -type d -print -quit)"
+    ln -s "$NDK" "$ANDROID_NDK_PATH"
+fi
+
 # Restore JAVA_HOME.
 export JAVA_HOME=$OG_JAVA_HOME
 
