@@ -12,6 +12,7 @@ jobs:
             matrix:
                 features:
                     - android-sdk
+                    - common
                 baseImage:
                     - mcr.microsoft.com/devcontainers/base:ubuntu
         steps:
