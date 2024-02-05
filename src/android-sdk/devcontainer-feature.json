@@ -1,0 +1,34 @@
+{
+    "name": "Android SDK",
+    "id": "android-sdk",
+    "version": "1.1.0",
+    "description": "Install Android SDK `cmdline-tools`, `platform-tools`, and, `build-tools`.",
+    "containerEnv": {
+        "ANDROID_HOME": "/usr/local/lib/android",
+        "ANDROID_SDK_ROOT": "$ANDROID_HOME",
+        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
+    },
+    "options": {
+        "platform": {
+            "type": "string",
+            "default": "34",
+            "description": "SDK platform version"
+        },
+        "build_tools": {
+            "type": "string",
+            "default": "34.0.0",
+            "description": "SDK build-tools version"
+        },
+        "base_packages": {
+            "type": "string",
+            "default": "",
+            "description": "packages will override default packages, split by space"
+        },
+        "extra_packages": {
+            "type": "string",
+            "default": "",
+            "description": "extra packages, split by space"
+        }
+    },
+    "installsAfter": ["ghcr.io/devcontainers/features/common-utils", "ghcr.io/akhildevelops/devcontainer-features/apt"]
+}
