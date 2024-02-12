@@ -4,7 +4,7 @@ set +H
 
 URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip"
 
-sudo runuser -l vscode -c 'echo "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_PATH" >> ~/.bashrc'
+# sudo runuser -l vscode -c 'echo "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_PATH" >> ~/.bashrc'
 
 # Options.
 if [ -z "$PLATFORM" ]; then

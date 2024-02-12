@@ -1,9 +1,11 @@
 {
     "name": "Flutter",
     "id": "flutter",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "flutter",
-    "containerEnv": {},
+    "containerEnv": {
+        "PATH": "$PATH:$HOME/flutter/bin"
+    },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
         "ghcr.io/devcontainers/features/java",
