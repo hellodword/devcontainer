@@ -1,7 +1,7 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "1.0.2",
+    "version": "1.0.5",
     "description": "Install Android SDK `cmdline-tools`, `platform-tools`, and, `build-tools`.",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
@@ -18,6 +18,11 @@
             "type": "string",
             "default": "34",
             "description": "SDK platform version"
+        },
+        "ndk": {
+            "type": "string",
+            "default": "26.1.10909125",
+            "description": "NDK version"
         },
         "build_tools": {
             "type": "string",
