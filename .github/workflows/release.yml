@@ -1,7 +1,11 @@
 name: 'Release'
 on:
     workflow_dispatch:
-
+    push:
+        branches:
+            - 'master'
+        paths:
+            - '**/devcontainer-feature.json'
 jobs:
     deploy:
         if: ${{ github.ref == 'refs/heads/master' }}
