@@ -16,7 +16,7 @@ fi
 if [ -n "$BASE_PACKAGES" ]; then
     IFS=' ' read -ra PACKAGES <<< "$BASE_PACKAGES"
 else
-    PACKAGES=( "platform-tools" "platforms;android-$PLATFORM" "build-tools;$BUILD_TOOLS" )
+    PACKAGES=( "platform-tools" "platforms;android-$PLATFORM" "build-tools;$BUILD_TOOLS" "ndk" "sources;android-$PLATFORM" )
 fi
 if [ -n "$EXTRA_PACKAGES" ]; then
     IFS=' ' read -ra extra <<< "$EXTRA_PACKAGES"
