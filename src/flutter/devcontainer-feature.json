@@ -1,10 +1,10 @@
 {
     "name": "Flutter",
     "id": "flutter",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "flutter",
     "containerEnv": {
-        "PATH": "$PATH:$HOME/flutter/bin"
+        "PATH": "$PATH:/home/vscode/flutter/bin" // 注意，不支持 $HOME 这样的写法
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
