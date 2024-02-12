@@ -13,10 +13,13 @@ fi
 if [ -z "$BUILD_TOOLS" ]; then
     BUILD_TOOLS="34.0.0"
 fi
+if [ -z "$NDK" ]; then
+    NDK="26.1.10909125"
+fi
 if [ -n "$BASE_PACKAGES" ]; then
     IFS=' ' read -ra PACKAGES <<< "$BASE_PACKAGES"
 else
-    PACKAGES=( "platform-tools" "platforms;android-$PLATFORM" "build-tools;$BUILD_TOOLS" "ndk" "sources;android-$PLATFORM" )
+    PACKAGES=( "platform-tools" "platforms;android-$PLATFORM" "build-tools;$BUILD_TOOLS" "ndk;$NDK" "sources;android-$PLATFORM" )
 fi
 if [ -n "$EXTRA_PACKAGES" ]; then
     IFS=' ' read -ra extra <<< "$EXTRA_PACKAGES"
