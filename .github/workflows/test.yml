@@ -13,6 +13,8 @@ jobs:
                 features:
                     - android-sdk
                     - common
+                    - common-gui
+                    - flutter
                 baseImage:
                     - mcr.microsoft.com/devcontainers/base:ubuntu
         steps:

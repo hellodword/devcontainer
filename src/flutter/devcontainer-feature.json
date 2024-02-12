@@ -1,0 +1,8 @@
+{
+    "name": "Flutter",
+    "id": "flutter",
+    "version": "1.0.0",
+    "description": "flutter",
+    "containerEnv": {},
+    "installsAfter": ["ghcr.io/devcontainers/features/common-utils", "ghcr.io/hellodword/devcontainer/common-gui", "ghcr.io/hellodword/devcontainer/android-sdk"]
+}

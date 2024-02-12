@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
