@@ -1,0 +1,8 @@
+{
+    "name": "Common GUI",
+    "id": "common-gui",
+    "version": "1.0.0",
+    "description": "common gui tools and setups",
+    "containerEnv": {},
+    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+}
