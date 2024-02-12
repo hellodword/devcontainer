@@ -1,12 +1,13 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Install Android SDK `cmdline-tools`, `platform-tools`, and, `build-tools`.",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
         "ANDROID_SDK_ROOT": "$ANDROID_HOME",
         "ANDROID_NDK_PATH": "$ANDROID_HOME/ndk/ndk",
+        "NDK_PATH": "$ANDROID_NDK_PATH",
         "ANDROID_NDK": "$ANDROID_NDK_PATH",
         "ANDROID_NDK_ROOT": "$ANDROID_NDK_PATH",
         "ANDROID_NDK_HOME": "$ANDROID_NDK_PATH",
@@ -34,5 +35,9 @@
             "description": "extra packages, split by space"
         }
     },
-    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/java",
+        "ghcr.io/hellodword/devcontainer/common"
+    ]
 }

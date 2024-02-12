@@ -4,5 +4,7 @@
     "version": "1.0.0",
     "description": "common tools and setups",
     "containerEnv": {},
-    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
 }

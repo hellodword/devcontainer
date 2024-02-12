@@ -1,8 +1,15 @@
 {
     "name": "Flutter",
     "id": "flutter",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "description": "flutter",
-    "containerEnv": {},
-    "installsAfter": ["ghcr.io/devcontainers/features/common-utils", "ghcr.io/hellodword/devcontainer/common-gui", "ghcr.io/hellodword/devcontainer/android-sdk"]
+    "containerEnv": {
+        "PATH": "$PATH:/home/vscode/flutter/bin" // 注意，不支持 $HOME 这样的写法
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/java",
+        "ghcr.io/hellodword/devcontainer/common-gui",
+        "ghcr.io/hellodword/devcontainer/android-sdk"
+    ]
 }
