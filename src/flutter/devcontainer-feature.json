@@ -4,7 +4,7 @@
     "version": "1.0.3",
     "description": "flutter",
     "containerEnv": {
-        "PATH": "$PATH:/home/vscode/flutter/bin" // 注意，不支持 $HOME 这样的写法
+        "PATH": "$PATH:/home/vscode/flutter/bin"
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
