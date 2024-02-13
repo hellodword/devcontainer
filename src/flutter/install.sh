@@ -5,9 +5,15 @@ set +H
 export FLUTTER_PARENT="$(dirname $FLUTTER_HOME)"
 mkdir -p "$FLUTTER_PARENT"
 
-sudo -Eu "$_REMOTE_USER" bash << EOF
+sudo -Eu "$_REMOTE_USER" bash -x << EOF
+# fix HOME rewrited by sudo -E
+export HOME="$_REMOTE_USER_HOME"
 
 export PATH="$PATH:$FLUTTER_HOME/bin"
+
+id
+whoami
+env
 
 
 curl -fsSL --output /tmp/flutter.tar.xz "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$FLUTTER_VERSION-stable.tar.xz"
