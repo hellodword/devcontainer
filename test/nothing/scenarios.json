@@ -1,0 +1,9 @@
+{
+    "specific_sdk": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+        "features": {
+            "nothing": {}
+        },
+        "initializeCommand": "pwd; exit 1 && mkdir -p ${localWorkspaceFolder}/.mount/.android"
+    }
+}

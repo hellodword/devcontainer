@@ -42,6 +42,7 @@ jobs:
         strategy:
             matrix:
                 features:
+                    - nothing
                     - android-sdk
                     - flutter
         steps:
