@@ -7,7 +7,7 @@
 
 ## tips
 
-- containerEnv 中不支持 `$HOME` ，要写完整的路径 `/home/vscode`
+- `devcontainer-feature.json` 的 containerEnv 中似乎不支持 `$HOME` ，要写完整的路径 `/home/vscode`
 - GitHub Actions 中， `runneradmin` 才是 `1000:1000`，所以似乎要 sudo 才能实现 runnerUser 为 vscode 时，容器内为 `1000:1000`，否则可能会是 `1002:1002` 等等
     ```
     runneradmin:x:1000:
@@ -16,6 +16,8 @@
     runneradmin:x:1000:1000:Ubuntu:/home/runneradmin:/bin/bash
     runner:x:1001:127:,,,:/home/runner:/bin/bash
     ```
+- `devcontainer-feature.json` 的 `containerEnv` 不支持 `localEnv`， [issue #7766](https://github.com/microsoft/vscode-remote-release/issues/7766)
+- `devcontainer-feature.json` 的 `mounts` 中支持 `localEnv` 但似乎不支持 `containerEnv` 或 `remoteEnv`
 
 ## GUI
 
