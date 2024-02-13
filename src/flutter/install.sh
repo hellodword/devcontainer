@@ -2,9 +2,13 @@
 set -e
 set +H
 
-su - "$_REMOTE_USER"
+export FLUTTER_PARENT="$(dirname $FLUTTER_HOME)"
+mkdir -p "$FLUTTER_PARENT"
 
-FLUTTER_PARENT="$(dirname $FLUTTER_HOME)"
+sudo -Eu "$_REMOTE_USER" bash << EOF
+
+export PATH="$PATH:$FLUTTER_HOME/bin"
+
 
 curl -fsSL --output /tmp/flutter.tar.xz "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$FLUTTER_VERSION-stable.tar.xz"
 sudo tar xf /tmp/flutter.tar.xz -C "$FLUTTER_PARENT"
@@ -19,4 +23,4 @@ yes "y" | flutter doctor --android-licenses
 
 sudo chown -R "$_REMOTE_USER:$_REMOTE_USER" "$FLUTTER_HOME"
 
-exit
+EOF
