@@ -6,6 +6,7 @@
             "common-gui": {},
             "android-sdk": {},
             "flutter": {}
-        }
+        },
+        "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
     }
 }
