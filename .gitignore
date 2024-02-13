@@ -3,3 +3,7 @@ node_modules/
 
 # debug
 npm-debug.log*
+
+output
+
+.vscode
