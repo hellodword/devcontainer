@@ -1,0 +1,11 @@
+{
+    "specific_sdk": {
+        "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+        "features": {
+            "common": {},
+            "common-gui": {},
+            "android-sdk": {},
+            "flutter": {}
+        }
+    }
+}

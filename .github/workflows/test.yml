@@ -16,7 +16,7 @@ jobs:
                     - common-gui
                     - flutter
                 baseImage:
-                    - mcr.microsoft.com/devcontainers/base:ubuntu
+                    - mcr.microsoft.com/devcontainers/base:ubuntu-22.04
         steps:
             - uses: actions/checkout@v4
 
@@ -32,6 +32,7 @@ jobs:
             matrix:
                 features:
                     - android-sdk
+                    - flutter
         steps:
             - uses: actions/checkout@v4
 
