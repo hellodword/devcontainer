@@ -26,6 +26,10 @@ jobs:
                 id
                 sudo id
 
+            - name: prepare for tests
+              run: |
+                bash prepare-for-tests.sh
+
             - uses: actions/checkout@v4
 
             - name: 'Install latest devcontainer CLI'
@@ -49,6 +53,10 @@ jobs:
                 cat /etc/passwd
                 id
                 sudo id
+
+            - name: prepare for tests
+              run: |
+                bash prepare-for-tests.sh
 
             - uses: actions/checkout@v4
 
