@@ -1,8 +1,8 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "1.0.6",
-    "description": "Install Android SDK `cmdline-tools`, `platform-tools`, and, `build-tools`.",
+    "version": "1.0.7",
+    "description": "- Install Android SDK `cmdline-tools`, `platform-tools`, `ndk` and, `build-tools`.  \n\n- The ~/.android will persisted in .mount/.android and `\"initializeCommand\": \"mkdir -p ${localWorkspaceFolder}/.mount/.android\"` is **required**.  \n\n- `\"runArgs\": [ \"--device-cgroup-rule\", \"c 189:* rmw\" ]` is **required** for usb.",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
         "ANDROID_SDK_ROOT": "$ANDROID_HOME",
@@ -44,5 +44,18 @@
         "ghcr.io/devcontainers/features/common-utils",
         "ghcr.io/devcontainers/features/java",
         "ghcr.io/hellodword/devcontainer/common"
+    ],
+    "onCreateCommand": "mkdir -p $HOME/.android; sudo chown -R $USER $HOME/.android",
+    "mounts": [
+        {
+            "source": "${localWorkspaceFolder}/.mount/.android",
+            "target": "/home/vscode/.android",
+            "type": "bind"
+        },
+        {
+            "source": "/dev/bus/usb",
+            "target": "/dev/bus/usb",
+            "type": "bind"
+        }
     ]
 }
