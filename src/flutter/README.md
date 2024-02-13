@@ -13,6 +13,12 @@ flutter
 
 
 
+## Customizations
+
+### VS Code Extensions
+
+- `dart-code.flutter`
+
 
 
 ---
