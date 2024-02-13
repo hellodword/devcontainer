@@ -1,10 +1,20 @@
 {
     "name": "Common GUI",
     "id": "common-gui",
-    "version": "1.0.0",
-    "description": "common gui tools and setups",
-    "containerEnv": {},
+    "version": "1.0.1",
+    "description": "Common GUI tools and setups.\nNow it's only for Wayland.",
+    "containerEnv": {
+        "WAYLAND_DISPLAY": "wayland-0",
+        "XDG_RUNTIME_DIR": "/tmp"
+    },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
+    ],
+    "mounts": [
+        {
+            "source": "${localEnv:XDG_RUNTIME_DIR}/${localEnv:WAYLAND_DISPLAY}",
+            "target": "/tmp/wayland-0",
+            "type": "bind"
+        }
     ]
 }
