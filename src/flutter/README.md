@@ -1,7 +1,28 @@
 
 # Flutter (flutter)
 
-flutter
+flutter feature.  
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "features": {
+        "ghcr.io/hellodword/devcontainer/common:1": {},
+        "ghcr.io/hellodword/devcontainer/common-gui:1": {},
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "17.0.10-jbr"
+        },
+        "ghcr.io/hellodword/devcontainer/android-sdk:1": {},
+        "ghcr.io/hellodword/devcontainer/flutter:1": {}
+    },
+    "runArgs": [
+        // Allow USB in container
+        "--device-cgroup-rule", "c 189:* rmw"
+    ],
+    "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
+}
+```
+
 
 ## Example Usage
 
