@@ -1,7 +1,7 @@
 {
     "name": "Flutter",
     "id": "flutter",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "flutter",
     "containerEnv": {
         "FLUTTER_HOME": "/usr/local/lib/flutter",
@@ -13,5 +13,12 @@
         "ghcr.io/devcontainers/features/java",
         "ghcr.io/hellodword/devcontainer/common-gui",
         "ghcr.io/hellodword/devcontainer/android-sdk"
-    ]
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dart-code.flutter"
+            ]
+        }
+    }
 }
