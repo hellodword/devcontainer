@@ -4,8 +4,6 @@ set +H
 
 URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip"
 
-# sudo runuser -l vscode -c 'echo "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_PATH" >> ~/.bashrc'
-
 # Options.
 if [ -z "$PLATFORM" ]; then
     PLATFORM="34"
@@ -71,8 +69,8 @@ fi
 # Restore JAVA_HOME.
 export JAVA_HOME=$OG_JAVA_HOME
 
+# Make sure the Android SDK has the correct permissions.
+sudo chown -R "$_REMOTE_USER:$_REMOTE_USER" "$ANDROID_HOME"
+
 # Exist subshell.
 exit
-
-# Make sure the Android SDK has the correct permissions.
-chown -R "$_REMOTE_USER:$_REMOTE_USER" "$ANDROID_HOME"

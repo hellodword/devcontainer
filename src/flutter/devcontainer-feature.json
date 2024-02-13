@@ -1,10 +1,12 @@
 {
     "name": "Flutter",
     "id": "flutter",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "flutter",
     "containerEnv": {
-        "PATH": "$PATH:/home/vscode/flutter/bin"
+        "FLUTTER_HOME": "/usr/local/lib/flutter",
+        "FLUTTER_VERSION": "3.16.9",
+        "PATH": "$PATH:$FLUTTER_HOME/bin"
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
