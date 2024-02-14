@@ -7,3 +7,5 @@ npm-debug.log*
 output
 
 .vscode
+
+src/debug-*/README.md

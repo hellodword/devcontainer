@@ -7,7 +7,17 @@
 
 ## tips
 
-- `devcontainer-feature.json` 的 containerEnv 中似乎不支持 `$HOME` ，要写完整的路径 `/home/vscode`
+- `devcontainer-feature.json` 不支持 `initializeCommand`
+    - [devcontainers/features issues#849](https://github.com/devcontainers/features/issues/849)
+
+- `devcontainer-feature.json` 不支持 remoteEnv
+- `devcontainer-feature.json` 的 containerEnv
+    - 不支持 `$HOME` 或者一切容器内的环境变量，要写完整的路径 `/home/vscode`
+    - 不支持一切求值表达式 `${localEnv:*}` 或 `${remoteEnv:*}` 或 `${containerEnv:*}`
+            - [issue #7766](https://github.com/microsoft/vscode-remote-release/issues/7766)
+            - [devcontainers/features issues#848](https://github.com/devcontainers/features/issues/848)
+
+
 - GitHub Actions 中， `runneradmin` 才是 `1000:1000`，所以似乎要 sudo 才能实现 runnerUser 为 vscode 时，容器内为 `1000:1000`，否则可能会是 `1002:1002` 等等
     ```
     runneradmin:x:1000:
@@ -16,9 +26,9 @@
     runneradmin:x:1000:1000:Ubuntu:/home/runneradmin:/bin/bash
     runner:x:1001:127:,,,:/home/runner:/bin/bash
     ```
-- `devcontainer-feature.json` 的 `containerEnv` 不支持 `localEnv`， [issue #7766](https://github.com/microsoft/vscode-remote-release/issues/7766)
-- `devcontainer-feature.json` 的 `mounts` 中支持 `localEnv` 但似乎不支持 `containerEnv` 或 `remoteEnv`
-- `devcontainer-feature.json` 的 `mounts` 在 validate 时不支持 string，以至于无法使用 `readonly`、`consistency=cached` 等
+- 在 `devcontainer.json` 和 `devcontainer-feature.json` 中应尽量只使用 `localEnv` 而避免使用 `containerEnv` 或 `remoteEnv` 或 `remoteUser` 等值，支持程度非常混乱
+
+- `devcontainer-feature.json` 的 `mounts` 在 `devcontainers/action` 进行 validate 时不支持 string，以至于无法使用 `readonly`、`consistency=cached` 等，考虑有空时 pr [修复](https://github.com/devcontainers/action/blob/a1930bf7eb60408bbfd6e201d88e33cdec41a25e/src/contracts/features.ts#L28-L33)
     ```json
     // "source=${localWorkspaceFolder}/.mount/.android,target=/home/vscode/.android,type=bind,consistency=cached",
     {
@@ -33,7 +43,7 @@
         "type": "bind"
     }
     ```
-- `devcontainer-feature.json` 没有类似 `devcontainer.json` 的 `initializeCommand`，所以一些需要在 hosts 上做持久化的操作需要放到 `devcontainer.json` 里，或者避免使用无法预测的路径？
+- `initializeCommand` 运行在 host，所以它的 `$HOME` 和 `${localEnv:HOME}` 等效，其余 lifecycle hooks 运行在容器内，所以是有区别的
 
 ## GUI
 

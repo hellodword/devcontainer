@@ -1,0 +1,17 @@
+{
+    "name": "debug-comments",
+    "id": "debug-comments",
+    "version": "1.0.0",
+    "description": "",
+    "mounts": [
+        // "source=/dev/bus/usb,target=/dev/bus/usb,type=bind,readonly"
+        {
+            "source": "/dev/bus/usb",
+            "target": "/dev/bus/usb",
+            "type": "bind"
+        }
+    ],
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

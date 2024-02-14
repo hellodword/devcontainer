@@ -5,7 +5,11 @@ on:
         branches:
             - 'master'
         paths:
-            - 'src/**/devcontainer-feature.json'
+            - 'src/common/devcontainer-feature.json'
+            - 'src/common-gui/devcontainer-feature.json'
+            - 'src/android-sdk/devcontainer-feature.json'
+            - 'src/flutter/devcontainer-feature.json'
+
 jobs:
     deploy:
         if: ${{ github.ref == 'refs/heads/master' }}
