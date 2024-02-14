@@ -1,0 +1,12 @@
+{
+    "name": "debug-localenv-in-containerenv",
+    "id": "debug-localenv-in-containerenv",
+    "version": "1.0.0",
+    "description": "",
+    "containerEnv": {
+        "WHATEVER": "${localEnv:HOME}"
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
