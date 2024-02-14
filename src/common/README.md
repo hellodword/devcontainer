@@ -13,6 +13,12 @@ common tools and setups
 
 
 
+## Customizations
+
+### VS Code Extensions
+
+- `esbenp.prettier-vscode`
+
 
 
 ---
