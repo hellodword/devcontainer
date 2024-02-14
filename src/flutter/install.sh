@@ -22,6 +22,7 @@ rm /tmp/flutter.tar.xz
 
 sudo chown -R "$_REMOTE_USER:$_REMOTE_USER" "$FLUTTER_HOME"
 
+dart --disable-analytics
 flutter --disable-analytics
 # flutter --disable-telemetry
 flutter precache

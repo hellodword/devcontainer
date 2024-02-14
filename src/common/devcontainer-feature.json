@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": [
@@ -9,8 +9,46 @@
     ],
     "customizations": {
         "vscode": {
+            "extensions": [
+                "esbenp.prettier-vscode"
+            ],
             "settings": {
-                "editor.formatOnSave": true
+                "diffEditor.wordWrap": "on",
+                "editor.formatOnType": false,
+                "editor.wordWrap": "on",
+                "editor.formatOnSave": true,
+                "[javascript]": {
+                    "editor.defaultFormatter": "vscode.typescript-language-features"
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "[jsonc]": {
+                    "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "dart.checkForSdkUpdates": false,
+                "extensions.autoCheckUpdates": false,
+                "extensions.autoUpdate": false,
+                "files.associations": {
+                    "cspell.json": "jsonc",
+                    "v2ray.json": "jsonc"
+                },
+                "git.autofetch": false,
+                "git.autorefresh": false,
+                "git.autoStash": false,
+                "git.enableCommitSigning": false,
+                "git.enableSmartCommit": false,
+                "git.enableStatusBarSync": false,
+                "git.enabled": true,
+                "telemetry.enableTelemetry": false,
+                "telemetry.telemetryLevel": "off",
+                "update.mode": "none",
+                "workbench.localHistory.enabled": false,
+                "java.autobuild.enabled": false,
+                "[markdown]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "prettier.enable": false
             }
         }
     }
