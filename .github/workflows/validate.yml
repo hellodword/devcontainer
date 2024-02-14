@@ -8,11 +8,27 @@ on:
 jobs:
     validate:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                features:
+                    - common
+                    - common-gui
+                    - android-sdk
+                    - flutter
         steps:
             - uses: actions/checkout@v4
 
+            # - name: 'Validate devcontainer-feature.json files'
+            #   uses: devcontainers/action@v1
+            #   with:
+            #       validate-only: 'true'
+            #       base-path-to-features: './src'
+
+            - uses: actions/setup-node@v4
+            - name: 'Install CLI'
+              run: |
+                  npm install -g @devcontainers/cli
+
             - name: 'Validate devcontainer-feature.json files'
-              uses: devcontainers/action@v1
-              with:
-                  validate-only: 'true'
-                  base-path-to-features: './src'
+              run: |
+                  devcontainer features package -f --log-level info ./src/${{ matrix.features }}
