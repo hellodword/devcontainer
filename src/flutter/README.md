@@ -38,6 +38,7 @@ flutter feature.
 
 ### VS Code Extensions
 
+- `dart-code.dart-code`
 - `dart-code.flutter`
 
 
