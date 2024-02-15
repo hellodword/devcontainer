@@ -47,25 +47,8 @@
 
 ## GUI
 
-和 wayland 配合非常简单:
-
-```json
-{
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-    "features": {
-        "ghcr.io/hellodword/devcontainer/common:1": {},
-        "ghcr.io/hellodword/devcontainer/common-gui:1": {}
-    },
-    "runArgs": [
-        "-v",
-        "${localEnv:XDG_RUNTIME_DIR}/${localEnv:WAYLAND_DISPLAY}:/tmp/${localEnv:WAYLAND_DISPLAY}"
-    ],
-    "containerEnv": {
-		"WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
-		"XDG_RUNTIME_DIR": "/tmp"
-	}
-}
-```
+目前 VSCode 会自动 mount socket 和设置环境变量，但可能会有一些边缘情况或者 BUG：
+- https://github.com/devcontainers/features/issues/860
 
 ## java feature list versions
 
