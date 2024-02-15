@@ -21,8 +21,9 @@ flutter feature.
     ],
     "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
 }
-```
+```  
 
+cpp image is **required** for cmake.
 
 ## Example Usage
 
@@ -38,6 +39,7 @@ flutter feature.
 
 ### VS Code Extensions
 
+- `dart-code.dart-code`
 - `dart-code.flutter`
 
 
