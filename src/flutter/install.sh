@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 set +H
+set -x
 
 export FLUTTER_PARENT="$(dirname $FLUTTER_HOME)"
 mkdir -p "$FLUTTER_PARENT"

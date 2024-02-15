@@ -1,8 +1,8 @@
 {
     "name": "Flutter",
     "id": "flutter",
-    "version": "1.0.7",
-    "description": "flutter feature.  \n\n```json\n{\n    \"image\": \"mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04\",\n    \"features\": {\n        \"ghcr.io/hellodword/devcontainer/common:1\": {},\n        \"ghcr.io/hellodword/devcontainer/common-gui:1\": {},\n        \"ghcr.io/devcontainers/features/java:1\": {\n            \"version\": \"17.0.10-jbr\"\n        },\n        \"ghcr.io/hellodword/devcontainer/android-sdk:1\": {},\n        \"ghcr.io/hellodword/devcontainer/flutter:1\": {}\n    },\n    \"runArgs\": [\n        // Allow USB in container\n        \"--device-cgroup-rule\", \"c 189:* rmw\"\n    ],\n    \"initializeCommand\": \"mkdir -p ${localWorkspaceFolder}/.mount/.android\"\n}\n```\n",
+    "version": "1.0.8",
+    "description": "flutter feature.  \n\n```json\n{\n    \"image\": \"mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04\",\n    \"features\": {\n        \"ghcr.io/hellodword/devcontainer/common:1\": {},\n        \"ghcr.io/hellodword/devcontainer/common-gui:1\": {},\n        \"ghcr.io/devcontainers/features/java:1\": {\n            \"version\": \"17.0.10-jbr\"\n        },\n        \"ghcr.io/hellodword/devcontainer/android-sdk:1\": {},\n        \"ghcr.io/hellodword/devcontainer/flutter:1\": {}\n    },\n    \"runArgs\": [\n        // Allow USB in container\n        \"--device-cgroup-rule\", \"c 189:* rmw\"\n    ],\n    \"initializeCommand\": \"mkdir -p ${localWorkspaceFolder}/.mount/.android\"\n}\n```  \n\ncpp image is **required** for cmake.",
     "containerEnv": {
         "FLUTTER_HOME": "/usr/local/lib/flutter",
         "FLUTTER_VERSION": "3.16.9",
@@ -11,6 +11,7 @@
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
         "ghcr.io/devcontainers/features/java",
+        "ghcr.io/hellodword/devcontainer/common",
         "ghcr.io/hellodword/devcontainer/common-gui",
         "ghcr.io/hellodword/devcontainer/android-sdk"
     ],

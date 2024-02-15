@@ -1,32 +1,17 @@
 #!/bin/bash
 set -e
 set +H
+set -x
 
 URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip"
 
-# Options.
-if [ -z "$PLATFORM" ]; then
-    PLATFORM="34"
-fi
-if [ -z "$BUILD_TOOLS" ]; then
-    BUILD_TOOLS="34.0.0"
-fi
-if [ -z "$NDK" ]; then
-    NDK="26.1.10909125"
-fi
-if [ -n "$BASE_PACKAGES" ]; then
-    IFS=' ' read -ra PACKAGES <<< "$BASE_PACKAGES"
-else
-    PACKAGES=( "platform-tools" "platforms;android-$PLATFORM" "build-tools;$BUILD_TOOLS" "ndk;$NDK" "sources;android-$PLATFORM" )
-fi
-if [ -n "$EXTRA_PACKAGES" ]; then
-    IFS=' ' read -ra extra <<< "$EXTRA_PACKAGES"
-    PACKAGES=("${PACKAGES[@]}" "${extra[@]}")
-fi
+# check java version
+[ -n "$JAVA_HOME" ]
+[ "$(javac --version | grep -oP '(?<=javac\s)\d+')" = "17" ]
 
-DEBIAN_FRONTEND="noninteractive" sudo apt update &&
-    sudo apt install --no-install-recommends -y openjdk-17-jdk-headless unzip wget usbutils &&
-    apt clean
+DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
+    sudo apt-get install --no-install-recommends -y unzip wget usbutils &&
+    sudo apt-get clean
 
 # Prepare install folder.
 mkdir -p "$ANDROID_HOME"
@@ -50,11 +35,31 @@ cd $ANDROID_HOME
 
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 
-# Save original JAVA_HOME.
-OG_JAVA_HOME=$JAVA_HOME
+# Options.
+if [ -z "$PLATFORM" ]; then
+    PLATFORM="$(sdkmanager --list 2>/dev/null | grep -oP '(?<=\splatforms;android-)[\d]+(?=\s)' | sort --version-sort -r  | head -1)"
+fi
+if [ -z "$BUILD_TOOLS" ]; then
+    BUILD_TOOLS="$(sdkmanager --list 2>/dev/null | grep -oP '(?<=\sbuild-tools;)[\d\.]+(?=\s)' | sort --version-sort -r  | head -1)"
+fi
+if [ -z "$NDK" ]; then
+    NDK="$(sdkmanager --list 2>/dev/null | grep -oP '(?<=\sndk;)[\d\.]+(?=\s)' | sort --version-sort -r | head -1)"
+fi
+if [ -n "$BASE_PACKAGES" ]; then
+    IFS=' ' read -ra PACKAGES <<< "$BASE_PACKAGES"
+else
+    PACKAGES=( "platform-tools" "platforms;android-$PLATFORM" "build-tools;$BUILD_TOOLS" "ndk;$NDK" )
+fi
+if [ -n "$EXTRA_PACKAGES" ]; then
+    IFS=' ' read -ra extra <<< "$EXTRA_PACKAGES"
+    PACKAGES=("${PACKAGES[@]}" "${extra[@]}")
+fi
 
-# thanks https://askubuntu.com/questions/772235/how-to-find-path-to-java#comment2258200_1029326.
-export JAVA_HOME=$(dirname $(dirname $(update-alternatives --list javac 2>&1 | head -n 1)))
+# # Save original JAVA_HOME.
+# OG_JAVA_HOME=$JAVA_HOME
+
+# # thanks https://askubuntu.com/questions/772235/how-to-find-path-to-java#comment2258200_1029326.
+# export JAVA_HOME=$(dirname $(dirname $(update-alternatives --list javac 2>&1 | head -n 1)))
 
 # TODO: Update everything to future-proof for the link getting stale.
 # yes | sdkmanager "cmdline-tools;latest"
@@ -66,8 +71,8 @@ if [ -d "$ANDROID_HOME/ndk" ]; then
     ln -s "$NDK" "$ANDROID_NDK_PATH"
 fi
 
-# Restore JAVA_HOME.
-export JAVA_HOME=$OG_JAVA_HOME
+# # Restore JAVA_HOME.
+# export JAVA_HOME=$OG_JAVA_HOME
 
 # Make sure the Android SDK has the correct permissions.
 sudo chown -R "$_REMOTE_USER:$_REMOTE_USER" "$ANDROID_HOME"

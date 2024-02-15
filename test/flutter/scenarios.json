@@ -4,6 +4,9 @@
         "features": {
             "common": {},
             "common-gui": {},
+            "ghcr.io/devcontainers/features/java:1": {
+                "version": "17.0.10-jbr"
+            },
             "android-sdk": {},
             "flutter": {}
         },
