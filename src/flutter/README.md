@@ -1,7 +1,7 @@
 
 # Flutter (flutter)
 
-flutter feature.  
+cpp image is **required** for cmake.
 
 ```json
 {
@@ -23,7 +23,6 @@ flutter feature.
 }
 ```
 
-
 ## Example Usage
 
 ```json
@@ -38,6 +37,7 @@ flutter feature.
 
 ### VS Code Extensions
 
+- `dart-code.dart-code`
 - `dart-code.flutter`
 
 

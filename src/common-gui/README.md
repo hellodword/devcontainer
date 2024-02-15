@@ -2,7 +2,8 @@
 # Common GUI (common-gui)
 
 Common GUI tools and setups.
-Now it's only for Wayland.
+
+**Only tested with Wayland.**
 
 ## Example Usage
 

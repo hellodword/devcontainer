@@ -2,7 +2,7 @@
     "name": "Common GUI",
     "id": "common-gui",
     "version": "1.0.2",
-    "description": "Common GUI tools and setups.  \n\n**Only tested with Wayland.**",
+    "description": "Common GUI tools and setups.\n\n**Only tested with Wayland.**",
     "containerEnv": {
         // "WAYLAND_DISPLAY": "wayland-0",
         // "XDG_RUNTIME_DIR": "/tmp"
