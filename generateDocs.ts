@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { getGitHubMetadata } from './utils';
-const core = console;
+import * as core from '@actions/core';
 import JSON from 'json5';
 
 const FEATURES_README_TEMPLATE = `
