@@ -1,8 +1,8 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "1.0.8",
-    "description": "- Install Android SDK `cmdline-tools`, `platform-tools`, `ndk` and, `build-tools`.  \n\n- The ~/.android will persisted in .mount/.android and `\"initializeCommand\": \"mkdir -p ${localWorkspaceFolder}/.mount/.android\"` is **required**.  \n\n- `\"runArgs\": [ \"--device-cgroup-rule\", \"c 189:* rmw\" ]` is **required** for usb.",
+    "version": "1.0.9",
+    "description": "- Install Android SDK `cmdline-tools`, `platform-tools`, `ndk` and, `build-tools`.  \n\n- The ~/.android will persisted in .mount/.android and `\"initializeCommand\": \"mkdir -p ${localWorkspaceFolder}/.mount/.android\"` is **required**.  \n\n- `\"runArgs\": [ \"--device-cgroup-rule\", \"c 189:* rmw\" ]` is **required** for usb.  \n\n- `\"ghcr.io/devcontainers/features/java:1\": { \"version\": \"17.0.10-jbr\" }` is **required** for JAVA_HOME.",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
         "ANDROID_SDK_ROOT": "$ANDROID_HOME",
@@ -16,18 +16,18 @@
     "options": {
         "platform": {
             "type": "string",
-            "default": "34",
-            "description": "SDK platform version"
+            "default": "",
+            "description": "SDK platform version, install latest if empty"
         },
         "ndk": {
             "type": "string",
-            "default": "26.1.10909125",
-            "description": "NDK version"
+            "default": "",
+            "description": "NDK version, install latest if empty"
         },
         "build_tools": {
             "type": "string",
-            "default": "34.0.0",
-            "description": "SDK build-tools version"
+            "default": "",
+            "description": "SDK build-tools version, install latest if empty"
         },
         "base_packages": {
             "type": "string",
@@ -60,6 +60,9 @@
     ],
     "customizations": {
         "vscode": {
+            "extensions": [
+                "vscjava.vscode-gradle"
+            ],
             "settings": {
                 "files.exclude": {
                     "**/.mount": true
