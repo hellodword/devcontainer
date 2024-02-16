@@ -1,10 +1,11 @@
-name: "Release"
+name: "Release Features"
 on:
   workflow_dispatch:
   push:
     branches:
       - "master"
     paths:
+      - ".github/workflows/release-features.yml"
       - "features/src/common/devcontainer-feature.json"
       - "features/src/common-gui/devcontainer-feature.json"
       - "features/src/android-sdk/devcontainer-feature.json"

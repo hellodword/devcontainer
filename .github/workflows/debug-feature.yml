@@ -1,4 +1,4 @@
-name: "Debug"
+name: "Debug Feature"
 on:
   workflow_dispatch:
     inputs:

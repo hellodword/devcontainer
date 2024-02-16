@@ -1,8 +1,11 @@
-name: "Test"
+name: "Test Features"
 on:
   push:
     branches:
       - "master"
+    paths:
+      - ".github/workflows/test-features.yml"
+      - "features/**"
   workflow_dispatch:
 
 jobs:
