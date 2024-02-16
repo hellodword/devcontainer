@@ -1,0 +1,15 @@
+{
+    "id": "template-flutter",
+    "version": "1.0.0",
+    "name": "Flutter",
+    "description": "Flutter template",
+    "options": {
+        "imageVariant": {
+            "type": "string",
+            "enum": [
+                "ubuntu-22.04"
+            ],
+            "default": "ubuntu-22.04"
+        }
+    }
+}
