@@ -1,0 +1,20 @@
+{
+    "name": "Chromium",
+    "id": "chromium",
+    "version": "1.0.0",
+    "description": "Install specific chromium bin.",
+    "containerEnv": {
+        "CHROME_EXECUTABLE": "/usr/local/lib/chrome-linux/chrome",
+        "PATH": "$PATH:/usr/local/lib/chrome-linux"
+    },
+    "options": {
+        "revision": {
+            "type": "string",
+            "default": "",
+            "description": "Chromium build revision, install latest if empty"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

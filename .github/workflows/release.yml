@@ -1,49 +1,51 @@
-name: 'Release'
+name: "Release"
 on:
-    workflow_dispatch:
-    push:
-        branches:
-            - 'master'
-        paths:
-            - 'src/common/devcontainer-feature.json'
-            - 'src/common-gui/devcontainer-feature.json'
-            - 'src/android-sdk/devcontainer-feature.json'
-            - 'src/flutter/devcontainer-feature.json'
+  workflow_dispatch:
+  push:
+    branches:
+      - "master"
+    paths:
+      - "src/common/devcontainer-feature.json"
+      - "src/common-gui/devcontainer-feature.json"
+      - "src/android-sdk/devcontainer-feature.json"
+      - "src/flutter/devcontainer-feature.json"
+      - "src/chromium/devcontainer-feature.json"
 
 jobs:
-    deploy:
-        if: ${{ github.ref == 'refs/heads/master' }}
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-            pull-requests: write
-            packages: write
-        strategy:
-            matrix:
-                features:
-                    - common
-                    - common-gui
-                    - android-sdk
-                    - flutter
-        steps:
-            - uses: actions/checkout@v4
+  deploy:
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      packages: write
+    strategy:
+      matrix:
+        features:
+          - common
+          - common-gui
+          - android-sdk
+          - flutter
+          - chromium
+    steps:
+      - uses: actions/checkout@v4
 
-            # - name: 'Publish Features'
-            #   uses: devcontainers/action@v1
-            #   with:
-            #       publish-features: 'true'
-            #       base-path-to-features: './src/${{ matrix.features }}'
-            #       generate-docs: 'true'
-            #   env:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: 'Publish Features'
+      #   uses: devcontainers/action@v1
+      #   with:
+      #       publish-features: 'true'
+      #       base-path-to-features: './src/${{ matrix.features }}'
+      #       generate-docs: 'true'
+      #   env:
+      #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - uses: actions/setup-node@v4
-            - name: 'Install CLI'
-              run: |
-                  npm install -g @devcontainers/cli
+      - uses: actions/setup-node@v4
+      - name: "Install CLI"
+        run: |
+          npm install -g @devcontainers/cli
 
-            - name: 'Publish Features'
-              run: |
-                  devcontainer features publish --registry "ghcr.io" --namespace "${{ github.repository }}" --log-level info ./src/${{ matrix.features }}
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Publish Features"
+        run: |
+          devcontainer features publish --registry "ghcr.io" --namespace "${{ github.repository }}" --log-level info ./src/${{ matrix.features }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
