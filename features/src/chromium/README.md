@@ -21,4 +21,4 @@ Install specific chromium bin.
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/hellodword/devcontainer/blob/main/src/chromium/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/hellodword/devcontainer/blob/main/features/src/chromium/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

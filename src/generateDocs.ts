@@ -171,6 +171,7 @@ async function _generateDocumentation(basePath: string, readmeTemplate: string, 
                 }
 
                 // Write new readme
+                core.info(`Writing: ${readmePath} ...`);
                 fs.writeFileSync(readmePath, newReadme);
             }
         })
