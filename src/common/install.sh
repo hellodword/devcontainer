@@ -5,5 +5,8 @@ set -x
 
 DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
     sudo apt-get install --no-install-recommends -y \
-        jq file vim bash-completion &&
+        wget curl ca-certificates \
+        unzip p7zip-full \
+        vim bash-completion \
+        jq file &&
     sudo apt-get clean

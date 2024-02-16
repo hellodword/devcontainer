@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": [
@@ -33,12 +33,12 @@
                     "cspell.json": "jsonc",
                     "v2ray.json": "jsonc"
                 },
-                "git.autofetch": false,
-                "git.autorefresh": false,
-                "git.autoStash": false,
-                "git.enableCommitSigning": false,
-                "git.enableSmartCommit": false,
-                "git.enableStatusBarSync": false,
+                // "git.autofetch": false,
+                // "git.autorefresh": false,
+                // "git.autoStash": false,
+                // "git.enableCommitSigning": false,
+                // "git.enableSmartCommit": false,
+                // "git.enableStatusBarSync": false,
                 "git.enabled": true,
                 "telemetry.enableTelemetry": false,
                 "telemetry.telemetryLevel": "off",
