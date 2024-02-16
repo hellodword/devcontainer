@@ -5,5 +5,5 @@ set -x
 
 DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
     sudo apt-get install --no-install-recommends -y \
-        fonts-noto fonts-noto-cjk libgtk-3-dev &&
+        fonts-liberation fonts-noto fonts-noto-cjk fonts-noto-color-emoji libgtk-3-dev &&
     sudo apt-get clean

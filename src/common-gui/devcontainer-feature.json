@@ -1,7 +1,7 @@
 {
     "name": "Common GUI",
     "id": "common-gui",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Common GUI tools and setups.\n\n**Only tested with Wayland.**",
     "containerEnv": {
         // "WAYLAND_DISPLAY": "wayland-0",
