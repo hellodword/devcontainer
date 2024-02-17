@@ -17,6 +17,7 @@ jobs:
           - common
           - common-gui
           - chromium
+          - cloudflared
         baseImage:
           - mcr.microsoft.com/devcontainers/base:ubuntu-22.04
     steps:

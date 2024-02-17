@@ -1,0 +1,9 @@
+{
+    "name": "Cloudflared",
+    "id": "cloudflared",
+    "version": "1.0.0",
+    "description": "Install cloudflared",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

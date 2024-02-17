@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { getGitHubMetadata } from './utils';
 import * as core from '@actions/core';
-import JSON from 'json5';
+import * as JSON from 'jsonc-parser';
 
 const FEATURES_README_TEMPLATE = `
 # #{Name}

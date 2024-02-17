@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+set +H
+set -x
+
+# avoid using github api which has rate limit, especially with VPN
+REPO="cloudflare/cloudflared"
+LATEST_VERSION="$(curl -fsS -w "%{redirect_url}" -o /dev/null "https://github.com/$REPO/releases/latest" | grep -oP '(?<=/releases/tag/)[^/]+$')"
+[ -n "$LATEST_VERSION" ]
+
+CURRENT_VERSION="$(cloudflared version | grep -oP '(?<=cloudflared version )[\d\.]+' || true)"
+if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
+    curl -fsSL --output /usr/local/bin/cloudflared "https://github.com/$REPO/releases/download/$LATEST_VERSION/cloudflared-linux-amd64"
+    chmod +x /usr/local/bin/cloudflared
+fi

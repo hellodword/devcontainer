@@ -11,6 +11,7 @@ on:
       - "features/src/android-sdk/devcontainer-feature.json"
       - "features/src/flutter/devcontainer-feature.json"
       - "features/src/chromium/devcontainer-feature.json"
+      - "features/src/cloudflared/devcontainer-feature.json"
 
 jobs:
   deploy:
@@ -28,6 +29,7 @@ jobs:
           - android-sdk
           - flutter
           - chromium
+          - cloudflared
     steps:
       - uses: actions/checkout@v4
 
