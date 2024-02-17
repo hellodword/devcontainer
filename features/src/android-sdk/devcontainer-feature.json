@@ -1,7 +1,7 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "- Install Android SDK `cmdline-tools`, `platform-tools`, `ndk` and, `build-tools`.\n\n- The ~/.android will persisted in .mount/.android and `\"initializeCommand\": \"mkdir -p ${localWorkspaceFolder}/.mount/.android\"` is **required**.\n\n- `\"runArgs\": [ \"--device-cgroup-rule\", \"c 189:* rmw\" ]` is **required** for usb.\n\n- `\"ghcr.io/devcontainers/features/java:1\": { \"version\": \"17.0.10-jbr\" }` is **required** for JAVA_HOME.",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
@@ -45,7 +45,7 @@
         "ghcr.io/devcontainers/features/java",
         "ghcr.io/hellodword/devcontainer/common"
     ],
-    "onCreateCommand": "mkdir -p $HOME/.android; sudo chown -R $USER $HOME/.android",
+    "onCreateCommand": "mkdir -p $HOME/.android", // ; sudo chown -R $USER $HOME/.android",
     "mounts": [
         {
             "source": "${localWorkspaceFolder}/.mount/.android",

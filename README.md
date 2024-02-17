@@ -96,3 +96,8 @@ sdk list java
         "-v",
         "/dev/bus/usb:/dev/bus/usb:ro",
 ```
+
+## image
+
+- https://github.com/devcontainers/images/issues/968
+- http://web.archive.org/web/20240217044438/https://blog.ianpreston.ca/posts/2022-12-30-devcontainers.html
