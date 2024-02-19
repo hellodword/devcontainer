@@ -30,6 +30,7 @@ jobs:
           - flutter
           - chromium
           - cloudflared
+          - k6
     steps:
       - uses: actions/checkout@v4
 
