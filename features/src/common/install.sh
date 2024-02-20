@@ -8,5 +8,6 @@ DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
         wget curl ca-certificates \
         unzip p7zip-full \
         vim bash-completion \
+        software-properties-common \
         jq file &&
     sudo apt-get clean
