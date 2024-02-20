@@ -1,0 +1,25 @@
+{
+    "name": "Vala",
+    "id": "vala",
+    "version": "1.0.0",
+    "description": "vala compiler, formatter, and language server",
+    "containerEnv": {},
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/hellodword/devcontainer/common"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "prince781.vala"
+            ],
+            "settings": {
+                "[vala]": {
+                    "editor.formatOnSave": true,
+                    "editor.defaultFormatter": "prince781.vala"
+                }
+            }
+        }
+    }
+}

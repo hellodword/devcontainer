@@ -52,6 +52,7 @@ jobs:
         features:
           - android-sdk
           - flutter
+          - vala
     steps:
       - name: prepare 1000:1000
         run: |

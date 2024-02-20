@@ -12,6 +12,8 @@ on:
       - "features/src/flutter/devcontainer-feature.json"
       - "features/src/chromium/devcontainer-feature.json"
       - "features/src/cloudflared/devcontainer-feature.json"
+      - "features/src/k6/devcontainer-feature.json"
+      - "features/src/vala/devcontainer-feature.json"
 
 jobs:
   deploy:
@@ -31,6 +33,7 @@ jobs:
           - chromium
           - cloudflared
           - k6
+          - vala
     steps:
       - uses: actions/checkout@v4
 
