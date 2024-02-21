@@ -3,7 +3,8 @@
         "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
         "features": {
             "ghcr.io/devcontainers/features/common-utils:2": {},
-            "common": {}
+            "common": {},
+	    "vala": {}
         },
         "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
     }
