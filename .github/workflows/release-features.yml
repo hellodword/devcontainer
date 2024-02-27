@@ -14,6 +14,7 @@ on:
       - "features/src/cloudflared/devcontainer-feature.json"
       - "features/src/k6/devcontainer-feature.json"
       - "features/src/vala/devcontainer-feature.json"
+      - "features/src/nginx/devcontainer-feature.json"
 
 jobs:
   deploy:
@@ -34,6 +35,7 @@ jobs:
           - cloudflared
           - k6
           - vala
+          - nginx
     steps:
       - uses: actions/checkout@v4
 

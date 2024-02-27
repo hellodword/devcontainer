@@ -1,0 +1,9 @@
+{
+    "name": "nginx",
+    "id": "nginx",
+    "version": "1.0.0",
+    "description": "Install nginx",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

@@ -19,6 +19,7 @@ jobs:
           - chromium
           - cloudflared
           - k6
+          - nginx
         baseImage:
           - mcr.microsoft.com/devcontainers/base:ubuntu-22.04
     steps:
