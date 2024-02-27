@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": [
@@ -28,6 +28,9 @@
                 },
                 "[jsonc]": {
                     "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "[vue]": {
+                    "editor.defaultFormatter": "Vue.volar"
                 },
                 "dart.checkForSdkUpdates": false,
                 "extensions.autoCheckUpdates": false,
