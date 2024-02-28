@@ -4,10 +4,12 @@
         "features": {
             "common": {},
             "common-gui": {},
-            "ghcr.io/devcontainers/features/java:1": {
+            "ghcr.io/devcontainers/features/java": {
                 "version": "17.0.10-jbr"
             },
-            "android-sdk": {},
+            "android-sdk": {
+                "base_packages": "platform-tools"
+            },
             "flutter": {}
         },
         "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"

@@ -29,6 +29,12 @@ flutter --disable-analytics
 flutter precache
 yes "y" | flutter doctor --android-licenses
 
+# download sdk/emulator/build-tools for flutter
+pushd /tmp
+flutter create test_drive && cd test_drive && flutter build linux && flutter build apk
+popd
+rm -rf /tmp/test_drive
+
 sudo chown -R "$_REMOTE_USER:$_REMOTE_USER" "$FLUTTER_HOME"
 
 EOF
