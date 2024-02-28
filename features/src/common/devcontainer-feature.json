@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": [
@@ -10,7 +10,8 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "esbenp.prettier-vscode"
+                "esbenp.prettier-vscode",
+                "redhat.vscode-yaml"
             ],
             "settings": {
                 "diffEditor.wordWrap": "on",
@@ -54,7 +55,32 @@
                 "[markdown]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode"
                 },
-                "prettier.enable": true
+                "prettier.enable": true,
+                "json.schemaDownload.enable": true,
+                "json.format.enable": false,
+                "json.schemas": [
+                    {
+                        "fileMatch": [
+                            "**/devcontainer-feature.json"
+                        ],
+                        "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerFeature.schema.json"
+                    },
+                    {
+                        "fileMatch": [
+                            "**/devcontainer.json"
+                        ],
+                        "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json"
+                    }
+                ],
+                // use prettier
+                "yaml.format.enable": false,
+                "[yaml]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                // "yaml.schemas": {
+                //     "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.ya?ml"
+                // },
+                "yaml.schemaStore.enable": true
             }
         }
     }
