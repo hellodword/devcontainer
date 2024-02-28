@@ -1,0 +1,40 @@
+name: "Test Images"
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - ".github/workflows/test-images.yml"
+      - "images/**"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        images:
+          - flutter
+    steps:
+      - name: prepare 1000:1000
+        run: |
+          set -x
+          cat /etc/group
+          cat /etc/passwd
+          id
+          sudo id
+
+      - uses: actions/checkout@v4
+
+      - name: prepare for tests
+        run: |
+          cd features
+          bash prepare-for-tests.sh
+
+      - name: "Install latest devcontainer CLI"
+        run: sudo npm install -g @devcontainers/cli
+
+      - name: "Generating tests for '${{ matrix.images }}'"
+        run: |
+          cd images/src/${{ matrix.images }}
+          sudo devcontainer build --workspace-folder . --image-name ${{ matrix.images }}

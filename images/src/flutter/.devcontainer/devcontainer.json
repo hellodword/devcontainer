@@ -1,0 +1,16 @@
+{
+    "name": "Flutter Prebuilt Devcontainer Image",
+    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "features": {
+        "ghcr.io/hellodword/devcontainer/common": {},
+        "ghcr.io/hellodword/devcontainer/common-gui": {},
+        "ghcr.io/devcontainers/features/java": {
+            "version": "17.0.10-jbr"
+        },
+        "ghcr.io/hellodword/devcontainer/android-sdk": {
+            "base_packages": "platform-tools"
+        },
+        "ghcr.io/hellodword/devcontainer/flutter": {}
+    },
+    "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
+}
