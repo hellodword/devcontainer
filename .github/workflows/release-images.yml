@@ -32,13 +32,37 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+      - name: "Install CLI"
+        run: |
+          npm install --ignore-scripts -g @devcontainers/cli
+
+      # - name: Pre-build dev container image - ${{ matrix.images }}
+      #   run: |
+      #     set -x
+      #     cd images/src/${{ matrix.images }}
+
+      #     IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}"
+      #     devcontainer build \
+      #       --workspace-folder . \
+      #       --config .devcontainer/devcontainer.json \
+      #       --log-level debug \
+      #       --cache-from "$IMAGE_NAME" --image-name "$IMAGE_NAME" \
+      #       --push true
+      #   env:
+      #     # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     DOCKER_BUILDKIT: "1"
+      #     COMPOSE_DOCKER_CLI_BUILD: "1"
 
       - name: Pre-build dev container image - ${{ matrix.images }}
         uses: devcontainers/ci@v0.3
         with:
           subFolder: images/src/${{ matrix.images }}
-          imageName: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}
-          cacheFrom: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}
+          configFile: ".devcontainer/devcontainer.json"
+          imageName: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
+          cacheFrom: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
           push: always
+          imageTag: nightly,latest
