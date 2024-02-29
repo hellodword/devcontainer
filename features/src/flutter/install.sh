@@ -29,7 +29,9 @@ flutter --disable-analytics
 flutter precache
 yes "y" | flutter doctor --android-licenses
 
-# download sdk/emulator/build-tools for flutter
+# simply prepare sdk/emulator/build-tools for flutter
+# or parse from source and sdkmanager --list
+# https://github.com/flutter/flutter/blob/41456452f29d64e8deb623a3c927524bcf9f111b/packages/flutter_tools/gradle/src/main/groovy/flutter.groovy#L44-L62
 pushd /tmp
 flutter create test_drive && cd test_drive && flutter build linux && flutter build apk
 popd
