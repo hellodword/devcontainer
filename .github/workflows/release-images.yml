@@ -9,6 +9,8 @@ on:
     paths:
       - ".github/workflows/release-images.yml"
       - "images/src/flutter/**"
+      - "images/src/go/**"
+      - "images/src/go-and-node/**"
 
 env:
   REGISTRY: ghcr.io
