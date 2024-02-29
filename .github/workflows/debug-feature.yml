@@ -31,7 +31,7 @@ jobs:
           bash prepare-for-tests.sh
 
       - name: "Install latest devcontainer CLI"
-        run: sudo npm install -g @devcontainers/cli
+        run: sudo npm install --ignore-scripts -g @devcontainers/cli
 
       - name: "Generating tests for '${{ inputs.feature }}' against '${{ matrix.baseImage }}'"
         run: |

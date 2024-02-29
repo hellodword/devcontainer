@@ -51,7 +51,7 @@ jobs:
       - uses: actions/setup-node@v4
       - name: "Install CLI"
         run: |
-          npm install -g @devcontainers/cli
+          npm install --ignore-scripts -g @devcontainers/cli
 
       - name: "Publish Features"
         run: |

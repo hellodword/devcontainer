@@ -32,7 +32,7 @@ jobs:
           bash prepare-for-tests.sh
 
       - name: "Install latest devcontainer CLI"
-        run: sudo npm install -g @devcontainers/cli
+        run: sudo npm install --ignore-scripts -g @devcontainers/cli
 
       - name: Smoke test for '${{ matrix.templates }}'
         id: smoke_test
