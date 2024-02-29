@@ -27,6 +27,12 @@ jobs:
           - images: flutter
             tag: latest,nightly
             config: .devcontainer/devcontainer.json
+          - images: go
+            tag: latest,nightly
+            config: .devcontainer/devcontainer.json
+          - images: go-and-node
+            tag: latest,nightly
+            config: .devcontainer/devcontainer.json
     steps:
       - uses: actions/checkout@v4
 

@@ -15,6 +15,8 @@ jobs:
       matrix:
         images:
           - flutter
+          - go
+          - go-and-node
     steps:
       - name: prepare 1000:1000
         run: |

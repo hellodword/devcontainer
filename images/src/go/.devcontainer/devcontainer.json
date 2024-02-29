@@ -1,0 +1,9 @@
+{
+    "name": "Go Prebuilt Devcontainer Image",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils": {},
+        "ghcr.io/hellodword/devcontainer/common": {},
+        "ghcr.io/devcontainers/features/go:1": {}
+    }
+}

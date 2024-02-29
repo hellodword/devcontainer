@@ -2,6 +2,7 @@
     "name": "Flutter Prebuilt Devcontainer Image",
     "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
     "features": {
+        "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},
         "ghcr.io/hellodword/devcontainer/common-gui": {},
         "ghcr.io/devcontainers/features/java": {
