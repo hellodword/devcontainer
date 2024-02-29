@@ -11,6 +11,5 @@
             "base_packages": "platform-tools"
         },
         "ghcr.io/hellodword/devcontainer/flutter": {}
-    },
-    "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
+    }
 }

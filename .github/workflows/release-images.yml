@@ -1,5 +1,7 @@
 name: "Release Images"
 on:
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
   push:
     branches:
@@ -37,5 +39,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           subFolder: images/src/${{ matrix.images }}
-          imageName: ghcr.io/${{ github.actor }}/devcontainers-images-${{ matrix.images }}
+          imageName: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}:nightly
+          cacheFrom: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}:nightly
           push: always
