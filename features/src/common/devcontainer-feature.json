@@ -1,45 +1,49 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "common tools and setups",
     "containerEnv": {},
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/common-utils"
-    ],
+    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
     "customizations": {
         "vscode": {
-            "extensions": [
-                "esbenp.prettier-vscode",
-                "redhat.vscode-yaml"
-            ],
+            "extensions": ["esbenp.prettier-vscode", "redhat.vscode-yaml"],
             "settings": {
+                // editor
                 "diffEditor.wordWrap": "on",
                 "editor.formatOnType": false,
                 "editor.wordWrap": "on",
                 "editor.formatOnSave": true,
+                // privacy & update
+                "telemetry.enableTelemetry": false,
+                "telemetry.telemetryLevel": "off",
+                "update.mode": "none",
+                "workbench.localHistory.enabled": false,
+                "extensions.autoCheckUpdates": false,
+                "extensions.autoUpdate": false,
+                // formatter
+                "prettier.enable": true,
+                "prettier.tabWidth": 4,
                 "[javascript]": {
                     "editor.defaultFormatter": "vscode.typescript-language-features"
                 },
                 "[typescript]": {
                     "editor.defaultFormatter": "vscode.typescript-language-features"
                 },
+                "json.format.enable": false,
                 "[json]": {
-                    "editor.defaultFormatter": "vscode.json-language-features"
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
                 },
                 "[jsonc]": {
-                    "editor.defaultFormatter": "vscode.json-language-features"
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
                 },
                 "[vue]": {
                     "editor.defaultFormatter": "Vue.volar"
                 },
-                "dart.checkForSdkUpdates": false,
-                "extensions.autoCheckUpdates": false,
-                "extensions.autoUpdate": false,
-                "files.associations": {
-                    "cspell.json": "jsonc",
-                    "v2ray.json": "jsonc"
+                "[markdown]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
                 },
+                // git
                 // "git.autofetch": false,
                 // "git.autorefresh": false,
                 // "git.autoStash": false,
@@ -47,32 +51,21 @@
                 // "git.enableSmartCommit": false,
                 // "git.enableStatusBarSync": false,
                 "git.enabled": true,
-                "telemetry.enableTelemetry": false,
-                "telemetry.telemetryLevel": "off",
-                "update.mode": "none",
-                "workbench.localHistory.enabled": false,
-                "java.autobuild.enabled": false,
-                "[markdown]": {
-                    "editor.defaultFormatter": "esbenp.prettier-vscode"
-                },
-                "prettier.enable": true,
+                // schema
                 "json.schemaDownload.enable": true,
-                "json.format.enable": false,
                 "json.schemas": [
                     {
-                        "fileMatch": [
-                            "**/devcontainer-feature.json"
-                        ],
+                        "fileMatch": ["**/devcontainer-feature.json"],
                         "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerFeature.schema.json"
                     },
                     {
                         "fileMatch": [
-                            "**/devcontainer.json"
+                            "**/devcontainer.json",
+                            "**/*.devcontainer.json"
                         ],
                         "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json"
                     }
                 ],
-                // use prettier
                 "yaml.format.enable": false,
                 "[yaml]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -80,7 +73,15 @@
                 // "yaml.schemas": {
                 //     "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.ya?ml"
                 // },
-                "yaml.schemaStore.enable": true
+                "yaml.schemaStore.enable": true,
+                // special files
+                "files.associations": {
+                    "cspell.json": "jsonc",
+                    "v2ray.json": "jsonc"
+                },
+                // misc
+                "dart.checkForSdkUpdates": false,
+                "java.autobuild.enabled": false
             }
         }
     }
