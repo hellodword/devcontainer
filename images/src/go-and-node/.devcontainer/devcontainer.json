@@ -1,10 +1,19 @@
 {
-    "name": "Go And Node Prebuilt Devcontainer Image",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils": {},
-        "ghcr.io/hellodword/devcontainer/common": {},
-        "ghcr.io/devcontainers/features/go:1": {},
-        "ghcr.io/devcontainers/features/node:1": {}
+  "name": "Go And Node Prebuilt Devcontainer Image",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils": {},
+    "ghcr.io/hellodword/devcontainer/common": {},
+    "ghcr.io/devcontainers/features/go:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.vscode-typescript-vue-plugin",
+        "Vue.volar",
+        "dbaeumer.vscode-eslint"
+      ]
     }
+  }
 }
