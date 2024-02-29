@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
@@ -23,7 +23,7 @@
                 "extensions.autoUpdate": false,
                 // formatter
                 "prettier.enable": true,
-                "prettier.tabWidth": 4,
+                "prettier.tabWidth": 2,
                 "[javascript]": {
                     "editor.defaultFormatter": "vscode.typescript-language-features"
                 },
