@@ -13,7 +13,6 @@
   - https://github.com/search?q=path%3A.devcontainer%2Fdevcontainer.json&type=code
 - https://github.com/devcontainers/action/issues/213
 - https://www.jetpack.io/blog/creating-nix-powered-containers-with-devbox/
-- https://containers.dev/guide/prebuild#how-to
 
 ## security
 
@@ -116,7 +115,23 @@ sdk list java
         "/dev/bus/usb:/dev/bus/usb:ro",
 ```
 
+```sh
+# find the major/miner numbers
+$ lsusb | grep Google
+Bus 003 Device 015: ID 1234:5678 Google Inc. Nexus/Pixel Device (charging + debug)
+
+$ ls -l /dev/bus/usb/003/015
+crw-rw----+ 1 root adbusers 189, 270 Feb 29 05:30 /dev/bus/usb/003/015
+
+# 189 is major and 270 is miner
+```
+
 ## image
+
+- https://containers.dev/guide/prebuild#how-to
 
 - https://github.com/devcontainers/images/issues/968
 - http://web.archive.org/web/20240217044438/https://blog.ianpreston.ca/posts/2022-12-30-devcontainers.html
+
+- https://containers.dev/implementors/reference/#labels
+  - `devcontainer.metadata` 并不支持 `runArgs` 和 `initializeCommand`
