@@ -13,6 +13,7 @@
   - https://github.com/search?q=path%3A.devcontainer%2Fdevcontainer.json&type=code
 - https://github.com/devcontainers/action/issues/213
 - https://www.jetpack.io/blog/creating-nix-powered-containers-with-devbox/
+- https://github.com/dev-wasm
 
 ## security
 
