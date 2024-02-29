@@ -23,8 +23,10 @@ jobs:
       packages: write
     strategy:
       matrix:
-        images:
-          - flutter
+        include:
+          - images: flutter
+            tag: latest, nightly
+            config: .devcontainer/devcontainer.json
     steps:
       - uses: actions/checkout@v4
 
@@ -57,12 +59,12 @@ jobs:
       #     DOCKER_BUILDKIT: "1"
       #     COMPOSE_DOCKER_CLI_BUILD: "1"
 
-      - name: Pre-build dev container image - ${{ matrix.images }}
+      - name: Pre-build dev container image - devcontainers-images-${{ matrix.images }}:(${{ matrix.tag }}) - ${{ matrix.config }}
         uses: devcontainers/ci@v0.3
         with:
           subFolder: images/src/${{ matrix.images }}
-          configFile: ".devcontainer/devcontainer.json"
+          configFile: ${{ matrix.config }}
           imageName: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
           cacheFrom: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
           push: always
-          imageTag: nightly,latest
+          imageTag: ${{ matrix.tag }}
