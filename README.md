@@ -4,14 +4,31 @@
 
 - https://containers.dev/
 - https://github.com/mviereck/x11docker/wiki/How-to-provide-Wayland-socket-to-docker-container
-- https://code.visualstudio.com/docs/remote/remote-overview
+- https://github.com/microsoft/vscode-docs/blob/c5995c0e408d5867e6f1a475212fb3c5076e1857/docs/remote/remote-overview.md
   - https://github.com/Microsoft/vscode-remote-release/issues
-  - https://code.visualstudio.com/docs/remote/troubleshooting
-  - https://code.visualstudio.com/docs/remote/faq#_why-arent-the-remote-development-extensions-or-their-components-open-source
+  - https://github.com/microsoft/vscode-docs/blob/c5995c0e408d5867e6f1a475212fb3c5076e1857/docs/remote/troubleshooting.md
+  - https://github.com/microsoft/vscode-docs/blob/c5995c0e408d5867e6f1a475212fb3c5076e1857/docs/remote/faq.md#why-arent-the-remote-development-extensions-or-their-components-open-source
 - https://github.com/manekinekko/awesome-devcontainers
   - https://github.com/search?q=path%3Adevcontainer-feature.json&type=code
   - https://github.com/search?q=path%3A.devcontainer%2Fdevcontainer.json&type=code
 - https://github.com/devcontainers/action/issues/213
+- https://www.jetpack.io/blog/creating-nix-powered-containers-with-devbox/
+- https://containers.dev/guide/prebuild#how-to
+
+## security
+
+- gVisor
+
+  > `runArgs` 里加上 `--runtime runsc` 就可以，但会有一些问题：
+
+  - 内核版本低
+  - 默认情况下没办法 sudo 了，所以 `onCreateCommand` 避免 sudo
+  - 已知在运行 GUI 应用方面有问题，未排查
+
+- rootless
+  - https://rootlesscontaine.rs/how-it-works/
+  - [with podman](https://github.com/microsoft/vscode-docs/blob/c5995c0e408d5867e6f1a475212fb3c5076e1857/remote/advancedcontainers/docker-options.md#podman)
+  - [Making Visual Studio Code devcontainer work properly on rootless Podman](https://web.archive.org/web/20230924063548/https://medium.com/@guillem.riera/making-visual-studio-code-devcontainer-work-properly-on-rootless-podman-8d9ddc368b30)
 
 ## tips
 
@@ -58,6 +75,8 @@
   ```
 
 - `initializeCommand` 运行在 host，所以它的 `$HOME` 和 `${localEnv:HOME}` 等效，其余 lifecycle hooks 运行在容器内，所以是有区别的
+
+- 用 go listen `:3000` 不会自动开端口，`localhost:3000` 才可以
 
 ## GUI
 
