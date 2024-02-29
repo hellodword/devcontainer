@@ -25,7 +25,7 @@ jobs:
       matrix:
         include:
           - images: flutter
-            tag: latest, nightly
+            tag: latest,nightly
             config: .devcontainer/devcontainer.json
     steps:
       - uses: actions/checkout@v4
