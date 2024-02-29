@@ -39,6 +39,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           subFolder: images/src/${{ matrix.images }}
-          imageName: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}:nightly
-          cacheFrom: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}:nightly
+          imageName: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}
+          cacheFrom: ${{ env.REGISTRY }}/${{ github.actor }}/devcontainers-images-${{ matrix.images }}
           push: always
