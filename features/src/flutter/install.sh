@@ -6,7 +6,7 @@ set -x
 export FLUTTER_PARENT="$(dirname $FLUTTER_HOME)"
 mkdir -p "$FLUTTER_PARENT"
 
-sudo -Eu "$_REMOTE_USER" bash -x << EOF
+sudo -Eu "$_REMOTE_USER" bash -ex << EOF
 # fix HOME rewrited by sudo -E
 export HOME="$_REMOTE_USER_HOME"
 
