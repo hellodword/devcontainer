@@ -11,6 +11,7 @@ on:
             - "images/src/flutter/**"
             - "images/src/go/**"
             - "images/src/go-and-node/**"
+            - "images/src/unidbg/**"
 
 env:
     REGISTRY: ghcr.io
@@ -33,6 +34,9 @@ jobs:
                       tag: latest,nightly
                       config: .devcontainer/devcontainer.json
                     - images: go-and-node
+                      tag: latest,nightly
+                      config: .devcontainer/devcontainer.json
+                    - images: unidbg
                       tag: latest,nightly
                       config: .devcontainer/devcontainer.json
         steps:
