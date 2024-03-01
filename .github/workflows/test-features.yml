@@ -54,6 +54,7 @@ jobs:
                     - android-sdk
                     - flutter
                     - vala
+                    - maven-dep
         steps:
             - name: prepare 1000:1000
               run: |

@@ -15,6 +15,7 @@ on:
             - "features/src/k6/devcontainer-feature.json"
             - "features/src/vala/devcontainer-feature.json"
             - "features/src/nginx/devcontainer-feature.json"
+            - "features/src/maven-dep/devcontainer-feature.json"
 
 jobs:
     deploy:
@@ -36,6 +37,7 @@ jobs:
                     - k6
                     - vala
                     - nginx
+                    - maven-dep
         steps:
             - uses: actions/checkout@v4
 

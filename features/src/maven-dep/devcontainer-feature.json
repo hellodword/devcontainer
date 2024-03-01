@@ -1,0 +1,23 @@
+{
+    "name": "Maven Dep",
+    "id": "maven-dep",
+    "version": "1.0.0",
+    "description": "- Install Maven Dep.\n\n- `\"ghcr.io/devcontainers/features/java:1\": { \"installMaven\": \"true\" }` is **required**.",
+    "options": {
+        "branch": {
+            "type": "string",
+            "default": "",
+            "description": "git branch"
+        },
+        "git": {
+            "type": "string",
+            "default": "",
+            "description": "git repo"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/java",
+        "ghcr.io/hellodword/devcontainer/common"
+    ]
+}

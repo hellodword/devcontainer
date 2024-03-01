@@ -18,6 +18,7 @@ common tools and setups
 ### VS Code Extensions
 
 - `esbenp.prettier-vscode`
+- `redhat.vscode-yaml`
 
 
 
