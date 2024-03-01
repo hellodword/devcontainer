@@ -1,36 +1,36 @@
 name: "Release Templates"
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - "master"
-    paths:
-      - ".github/workflows/release-templates.yml"
-      - "templates/src/flutter/devcontainer-template.json"
+    workflow_dispatch:
+    push:
+        branches:
+            - "master"
+        paths:
+            - ".github/workflows/release-templates.yml"
+            - "templates/src/flutter/devcontainer-template.json"
 
 jobs:
-  deploy:
-    if: ${{ github.ref == 'refs/heads/master' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      packages: write
-    strategy:
-      matrix:
-        templates:
-          - template-flutter
-    steps:
-      - uses: actions/checkout@v4
+    deploy:
+        if: ${{ github.ref == 'refs/heads/master' }}
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+            packages: write
+        strategy:
+            matrix:
+                templates:
+                    - template-flutter
+        steps:
+            - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-      - name: "Install CLI"
-        run: |
-          npm install --ignore-scripts -g @devcontainers/cli
+            - uses: actions/setup-node@v4
+            - name: "Install CLI"
+              run: |
+                  npm install --ignore-scripts -g @devcontainers/cli
 
-      - name: "Publish Templates"
-        run: |
-          cd templates
-          devcontainer templates publish --registry "ghcr.io" --namespace "${{ github.repository }}" --log-level info ./src/${{ matrix.templates }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: "Publish Templates"
+              run: |
+                  cd templates
+                  devcontainer templates publish --registry "ghcr.io" --namespace "${{ github.repository }}" --log-level info ./src/${{ matrix.templates }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

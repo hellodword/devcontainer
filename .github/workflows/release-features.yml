@@ -1,61 +1,61 @@
 name: "Release Features"
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - "master"
-    paths:
-      - ".github/workflows/release-features.yml"
-      - "features/src/common/devcontainer-feature.json"
-      - "features/src/common-gui/devcontainer-feature.json"
-      - "features/src/android-sdk/devcontainer-feature.json"
-      - "features/src/flutter/devcontainer-feature.json"
-      - "features/src/chromium/devcontainer-feature.json"
-      - "features/src/cloudflared/devcontainer-feature.json"
-      - "features/src/k6/devcontainer-feature.json"
-      - "features/src/vala/devcontainer-feature.json"
-      - "features/src/nginx/devcontainer-feature.json"
+    workflow_dispatch:
+    push:
+        branches:
+            - "master"
+        paths:
+            - ".github/workflows/release-features.yml"
+            - "features/src/common/devcontainer-feature.json"
+            - "features/src/common-gui/devcontainer-feature.json"
+            - "features/src/android-sdk/devcontainer-feature.json"
+            - "features/src/flutter/devcontainer-feature.json"
+            - "features/src/chromium/devcontainer-feature.json"
+            - "features/src/cloudflared/devcontainer-feature.json"
+            - "features/src/k6/devcontainer-feature.json"
+            - "features/src/vala/devcontainer-feature.json"
+            - "features/src/nginx/devcontainer-feature.json"
 
 jobs:
-  deploy:
-    if: ${{ github.ref == 'refs/heads/master' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      packages: write
-    strategy:
-      matrix:
-        features:
-          - common
-          - common-gui
-          - android-sdk
-          - flutter
-          - chromium
-          - cloudflared
-          - k6
-          - vala
-          - nginx
-    steps:
-      - uses: actions/checkout@v4
+    deploy:
+        if: ${{ github.ref == 'refs/heads/master' }}
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+            packages: write
+        strategy:
+            matrix:
+                features:
+                    - common
+                    - common-gui
+                    - android-sdk
+                    - flutter
+                    - chromium
+                    - cloudflared
+                    - k6
+                    - vala
+                    - nginx
+        steps:
+            - uses: actions/checkout@v4
 
-      # - name: 'Publish Features'
-      #   uses: devcontainers/action@v1
-      #   with:
-      #       publish-features: 'true'
-      #       base-path-to-features: './src/${{ matrix.features }}'
-      #       generate-docs: 'true'
-      #   env:
-      #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # - name: 'Publish Features'
+            #   uses: devcontainers/action@v1
+            #   with:
+            #       publish-features: 'true'
+            #       base-path-to-features: './src/${{ matrix.features }}'
+            #       generate-docs: 'true'
+            #   env:
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v4
-      - name: "Install CLI"
-        run: |
-          npm install --ignore-scripts -g @devcontainers/cli
+            - uses: actions/setup-node@v4
+            - name: "Install CLI"
+              run: |
+                  npm install --ignore-scripts -g @devcontainers/cli
 
-      - name: "Publish Features"
-        run: |
-          cd features
-          devcontainer features publish --registry "ghcr.io" --namespace "${{ github.repository }}" --log-level info ./src/${{ matrix.features }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: "Publish Features"
+              run: |
+                  cd features
+                  devcontainer features publish --registry "ghcr.io" --namespace "${{ github.repository }}" --log-level info ./src/${{ matrix.features }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

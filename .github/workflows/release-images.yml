@@ -1,78 +1,78 @@
 name: "Release Images"
 on:
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-  push:
-    branches:
-      - "master"
-    paths:
-      - ".github/workflows/release-images.yml"
-      - "images/src/flutter/**"
-      - "images/src/go/**"
-      - "images/src/go-and-node/**"
+    schedule:
+        - cron: "0 0 * * *"
+    workflow_dispatch:
+    push:
+        branches:
+            - "master"
+        paths:
+            - ".github/workflows/release-images.yml"
+            - "images/src/flutter/**"
+            - "images/src/go/**"
+            - "images/src/go-and-node/**"
 
 env:
-  REGISTRY: ghcr.io
+    REGISTRY: ghcr.io
 
 jobs:
-  deploy:
-    if: ${{ github.ref == 'refs/heads/master' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      packages: write
-    strategy:
-      matrix:
-        include:
-          - images: flutter
-            tag: latest,nightly
-            config: .devcontainer/devcontainer.json
-          - images: go
-            tag: latest,nightly
-            config: .devcontainer/devcontainer.json
-          - images: go-and-node
-            tag: latest,nightly
-            config: .devcontainer/devcontainer.json
-    steps:
-      - uses: actions/checkout@v4
+    deploy:
+        if: ${{ github.ref == 'refs/heads/master' }}
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+            packages: write
+        strategy:
+            matrix:
+                include:
+                    - images: flutter
+                      tag: latest,nightly
+                      config: .devcontainer/devcontainer.json
+                    - images: go
+                      tag: latest,nightly
+                      config: .devcontainer/devcontainer.json
+                    - images: go-and-node
+                      tag: latest,nightly
+                      config: .devcontainer/devcontainer.json
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Log in to the Container registry
+              uses: docker/login-action@v3
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.repository_owner }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v4
-      - name: "Install CLI"
-        run: |
-          npm install --ignore-scripts -g @devcontainers/cli
+            - uses: actions/setup-node@v4
+            - name: "Install CLI"
+              run: |
+                  npm install --ignore-scripts -g @devcontainers/cli
 
-      # - name: Pre-build dev container image - ${{ matrix.images }}
-      #   run: |
-      #     set -x
-      #     cd images/src/${{ matrix.images }}
+            # - name: Pre-build dev container image - ${{ matrix.images }}
+            #   run: |
+            #     set -x
+            #     cd images/src/${{ matrix.images }}
 
-      #     IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}"
-      #     devcontainer build \
-      #       --workspace-folder . \
-      #       --config .devcontainer/devcontainer.json \
-      #       --log-level debug \
-      #       --cache-from "$IMAGE_NAME" --image-name "$IMAGE_NAME" \
-      #       --push true
-      #   env:
-      #     # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     DOCKER_BUILDKIT: "1"
-      #     COMPOSE_DOCKER_CLI_BUILD: "1"
+            #     IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}"
+            #     devcontainer build \
+            #       --workspace-folder . \
+            #       --config .devcontainer/devcontainer.json \
+            #       --log-level debug \
+            #       --cache-from "$IMAGE_NAME" --image-name "$IMAGE_NAME" \
+            #       --push true
+            #   env:
+            #     # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #     DOCKER_BUILDKIT: "1"
+            #     COMPOSE_DOCKER_CLI_BUILD: "1"
 
-      - name: Pre-build dev container image - devcontainers-images-${{ matrix.images }}:(${{ matrix.tag }}) - ${{ matrix.config }}
-        uses: devcontainers/ci@v0.3
-        with:
-          subFolder: images/src/${{ matrix.images }}
-          configFile: images/src/${{ matrix.images }}/${{ matrix.config }}
-          imageName: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
-          cacheFrom: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
-          push: always
-          imageTag: ${{ matrix.tag }}
+            - name: Pre-build dev container image - devcontainers-images-${{ matrix.images }}:(${{ matrix.tag }}) - ${{ matrix.config }}
+              uses: devcontainers/ci@v0.3
+              with:
+                  subFolder: images/src/${{ matrix.images }}
+                  configFile: images/src/${{ matrix.images }}/${{ matrix.config }}
+                  imageName: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
+                  cacheFrom: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
+                  push: always
+                  imageTag: ${{ matrix.tag }}

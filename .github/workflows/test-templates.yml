@@ -1,41 +1,41 @@
 name: "Test Templates"
 on:
-  push:
-    branches:
-      - "master"
-    paths:
-      - ".github/workflows/test-templates.yml"
-      - "templates/**"
-  workflow_dispatch:
+    push:
+        branches:
+            - "master"
+        paths:
+            - ".github/workflows/test-templates.yml"
+            - "templates/**"
+    workflow_dispatch:
 
 jobs:
-  test-templates:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        templates:
-          - template-flutter
-    steps:
-      - name: prepare 1000:1000
-        run: |
-          set -x
-          cat /etc/group
-          cat /etc/passwd
-          id
-          sudo id
+    test-templates:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                templates:
+                    - template-flutter
+        steps:
+            - name: prepare 1000:1000
+              run: |
+                  set -x
+                  cat /etc/group
+                  cat /etc/passwd
+                  id
+                  sudo id
 
-      - uses: actions/checkout@v4
+            - uses: actions/checkout@v4
 
-      - name: prepare for tests
-        run: |
-          cd templates
-          bash prepare-for-tests.sh
+            - name: prepare for tests
+              run: |
+                  cd templates
+                  bash prepare-for-tests.sh
 
-      - name: "Install latest devcontainer CLI"
-        run: sudo npm install --ignore-scripts -g @devcontainers/cli
+            - name: "Install latest devcontainer CLI"
+              run: sudo npm install --ignore-scripts -g @devcontainers/cli
 
-      - name: Smoke test for '${{ matrix.templates }}'
-        id: smoke_test
-        uses: ./templates/smoke-test
-        with:
-          template: "${{ matrix.templates }}"
+            - name: Smoke test for '${{ matrix.templates }}'
+              id: smoke_test
+              uses: ./templates/smoke-test
+              with:
+                  template: "${{ matrix.templates }}"
