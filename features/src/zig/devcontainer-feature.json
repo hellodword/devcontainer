@@ -1,0 +1,26 @@
+{
+    "name": "Zig",
+    "id": "zig",
+    "version": "1.0.0",
+    "description": "Installs Zig and common Zig utilities. Auto-detects latest version and installs needed dependencies.",
+    "containerEnv": {
+        "ZIG_ROOT": "/usr/local/zig",
+        "PATH": "/usr/local/zig:/usr/local/zls/bin:${PATH}"
+    },
+    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
+    "customizations": {
+        "vscode": {
+            "extensions": ["ziglang.vscode-zig"],
+            "settings": {
+                "zig.path": "/usr/local/zig/zig",
+                "zig.zls.path": "/usr/local/zls/bin/zls",
+                "zig.checkForUpdate": false,
+                "zig.initialSetupDone": true,
+                "zig.formattingProvider": "zls",
+                "[zig]": {
+                    "editor.defaultFormatter": "ziglang.vscode-zig"
+                }
+            }
+        }
+    }
+}

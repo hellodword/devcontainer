@@ -20,6 +20,7 @@ jobs:
                     - cloudflared
                     - k6
                     - nginx
+                    - zig
                 baseImage:
                     - mcr.microsoft.com/devcontainers/base:ubuntu-22.04
         steps:

@@ -16,6 +16,7 @@ on:
             - "features/src/vala/devcontainer-feature.json"
             - "features/src/nginx/devcontainer-feature.json"
             - "features/src/maven-dep/devcontainer-feature.json"
+            - "features/src/zig/devcontainer-feature.json"
 
 jobs:
     deploy:
@@ -38,6 +39,7 @@ jobs:
                     - vala
                     - nginx
                     - maven-dep
+                    - zig
         steps:
             - uses: actions/checkout@v4
 
