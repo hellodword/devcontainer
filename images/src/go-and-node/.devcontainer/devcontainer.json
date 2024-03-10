@@ -9,11 +9,7 @@
     },
     "customizations": {
         "vscode": {
-            "extensions": [
-                "Vue.vscode-typescript-vue-plugin",
-                "Vue.volar",
-                "dbaeumer.vscode-eslint"
-            ]
+            "extensions": ["Vue.volar", "dbaeumer.vscode-eslint"]
         }
     }
 }
