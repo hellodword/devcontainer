@@ -6,6 +6,7 @@ on:
         paths:
             - ".github/workflows/test-images.yml"
             - "images/**"
+            - "features/**/devcontainer-feature.json"
     workflow_dispatch:
 
 jobs:

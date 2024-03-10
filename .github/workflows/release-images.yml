@@ -12,6 +12,7 @@ on:
             - "images/src/go/**"
             - "images/src/go-and-node/**"
             - "images/src/unidbg/**"
+            - "features/**/devcontainer-feature.json"
 
 env:
     REGISTRY: ghcr.io
