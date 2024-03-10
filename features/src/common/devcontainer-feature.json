@@ -1,13 +1,17 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "description": "common tools and setups",
     "containerEnv": {},
     "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
     "customizations": {
         "vscode": {
-            "extensions": ["esbenp.prettier-vscode", "redhat.vscode-yaml"],
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "redhat.vscode-yaml",
+                "ms-python.autopep8"
+            ],
             "settings": {
                 // editor
                 "diffEditor.wordWrap": "on",
@@ -42,6 +46,9 @@
                 },
                 "[markdown]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.autopep8"
                 },
                 // git
                 // "git.autofetch": false,
