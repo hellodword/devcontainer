@@ -18,6 +18,8 @@ jobs:
                     - flutter
                     - go
                     - go-and-node
+                    - unidbg
+                    - web3-dev
         steps:
             - name: prepare 1000:1000
               run: |

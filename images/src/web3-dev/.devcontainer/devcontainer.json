@@ -1,0 +1,16 @@
+{
+    "name": "Web3 Dev Prebuilt Devcontainer Image",
+    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils": {},
+        "ghcr.io/hellodword/devcontainer/common": {},
+        "ghcr.io/devcontainers/features/go:1": {},
+        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers/features/rust:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": ["dbaeumer.vscode-eslint"]
+        }
+    }
+}
