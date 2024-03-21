@@ -1,0 +1,13 @@
+{
+    "specific_sdk": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils": {},
+            "common": {},
+            "ghcr.io/devcontainers/features/python:1": {},
+            "pip-dep": {
+                "deps": "Flask python-dotenv"
+            }
+        }
+    }
+}

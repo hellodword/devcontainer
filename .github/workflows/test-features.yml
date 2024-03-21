@@ -56,6 +56,7 @@ jobs:
                     - flutter
                     - vala
                     - maven-dep
+                    - pip-dep
         steps:
             - name: prepare 1000:1000
               run: |

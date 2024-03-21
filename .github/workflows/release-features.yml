@@ -17,6 +17,7 @@ on:
             - "features/src/nginx/devcontainer-feature.json"
             - "features/src/maven-dep/devcontainer-feature.json"
             - "features/src/zig/devcontainer-feature.json"
+            - "features/src/pip-dep/devcontainer-feature.json"
 
 jobs:
     deploy:
@@ -40,6 +41,7 @@ jobs:
                     - nginx
                     - maven-dep
                     - zig
+                    - pip-dep
         steps:
             - uses: actions/checkout@v4
 

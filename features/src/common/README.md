@@ -19,6 +19,7 @@ common tools and setups
 
 - `esbenp.prettier-vscode`
 - `redhat.vscode-yaml`
+- `redhat.vscode-xml`
 
 
 
