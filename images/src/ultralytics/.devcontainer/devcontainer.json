@@ -1,0 +1,17 @@
+{
+    "name": "ultralytics Prebuilt Devcontainer Image",
+    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils": {},
+        "ghcr.io/hellodword/devcontainer/common": {},
+        "ghcr.io/devcontainers/features/python:1": {},
+        "ghcr.io/hellodword/devcontainer/pip-dep": {
+            "deps": "ultralytics"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": ["ms-python.autopep8"]
+        }
+    }
+}

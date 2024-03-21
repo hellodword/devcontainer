@@ -20,6 +20,7 @@ jobs:
                     - go-and-node
                     - unidbg
                     - web3-dev
+                    - ultralytics
         steps:
             - name: prepare 1000:1000
               run: |

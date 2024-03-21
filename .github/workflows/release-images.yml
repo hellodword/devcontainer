@@ -13,6 +13,7 @@ on:
             - "images/src/go-and-node/**"
             - "images/src/unidbg/**"
             - "images/src/web3-dev/**"
+            - "images/src/ultralytics/**"
             - "features/**/devcontainer-feature.json"
 
 env:
@@ -42,6 +43,9 @@ jobs:
                       tag: latest,nightly
                       config: .devcontainer/devcontainer.json
                     - images: web3-dev
+                      tag: latest,nightly
+                      config: .devcontainer/devcontainer.json
+                    - images: ultralytics
                       tag: latest,nightly
                       config: .devcontainer/devcontainer.json
         steps:
