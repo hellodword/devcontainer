@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "description": "common tools and setups",
     "containerEnv": {
         "GOTOOLCHAIN": "local"

@@ -10,5 +10,7 @@ DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
         vim bash-completion \
         software-properties-common \
         jq file \
-        aria2 &&
+        aria2 \
+        apt-file &&
+    sudo apt-file update &&
     sudo apt-get clean
