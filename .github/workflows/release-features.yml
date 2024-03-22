@@ -19,6 +19,10 @@ on:
             - "features/src/zig/devcontainer-feature.json"
             - "features/src/pip-dep/devcontainer-feature.json"
 
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+    cancel-in-progress: false
+
 jobs:
     deploy:
         if: ${{ github.ref == 'refs/heads/master' }}

@@ -8,6 +8,10 @@ on:
             - ".github/workflows/release-templates.yml"
             - "templates/src/flutter/devcontainer-template.json"
 
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+    cancel-in-progress: false
+
 jobs:
     deploy:
         if: ${{ github.ref == 'refs/heads/master' }}
