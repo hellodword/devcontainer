@@ -1,6 +1,9 @@
 {
     "name": "ultralytics Prebuilt Devcontainer Image",
-    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
     "features": {
         "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},
