@@ -18,6 +18,7 @@ on:
             - "features/src/maven-dep/devcontainer-feature.json"
             - "features/src/zig/devcontainer-feature.json"
             - "features/src/pip-dep/devcontainer-feature.json"
+            - "features/src/solana/devcontainer-feature.json"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
@@ -46,6 +47,7 @@ jobs:
                     - maven-dep
                     - zig
                     - pip-dep
+                    - solana
         steps:
             - uses: actions/checkout@v4
 
