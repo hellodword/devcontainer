@@ -5,7 +5,8 @@
         "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},
         "ghcr.io/devcontainers/features/go:1": {},
-        "ghcr.io/devcontainers/features/node:1": {}
+        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/hellodword/devcontainer/k6": {}
     },
     "customizations": {
         "vscode": {

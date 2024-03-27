@@ -11,7 +11,8 @@
         },
         "ghcr.io/hellodword/devcontainer/maven-dep": {
             "git": "https://github.com/zhkl0228/unidbg"
-        }
+        },
+        "ghcr.io/hellodword/devcontainer/k6": {}
     },
     "customizations": {
         "vscode": {
