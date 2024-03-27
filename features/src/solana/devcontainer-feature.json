@@ -1,7 +1,10 @@
 {
     "name": "Solana",
     "id": "solana",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Install solana cli",
-    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+    "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
+    "containerEnv": {
+        "PATH": "/home/vscode/.local/share/solana/install/active_release/bin:$PATH"
+    }
 }
