@@ -13,4 +13,5 @@ pip -V
 export HOME="$_REMOTE_USER_HOME"
 
 bash -c "pip install $DEPS"
+rm -rf "$_REMOTE_USER_HOME/.cache/pip"
 EOF

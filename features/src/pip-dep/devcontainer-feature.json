@@ -1,7 +1,7 @@
 {
     "name": "Pip Dep",
     "id": "pip-dep",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "- Install Pip Dep.\n\n- `\"ghcr.io/devcontainers/features/python:1\": {}` is **required**.",
     "options": {
         "deps": {
