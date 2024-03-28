@@ -34,28 +34,30 @@ jobs:
         strategy:
             matrix:
                 include:
-                    - images: flutter
-                      tag: latest,nightly
+                    - image: flutter
+                      tags: latest
                       config: .devcontainer/devcontainer.json
-                    - images: go
-                      tag: latest,nightly
+                    - image: go
+                      tags: latest
                       config: .devcontainer/devcontainer.json
-                    - images: go-and-node
-                      tag: latest,nightly
+                    - image: go-and-node
+                      tags: latest
                       config: .devcontainer/devcontainer.json
-                    - images: unidbg
-                      tag: latest,nightly
+                    - image: unidbg
+                      tags: latest
                       config: .devcontainer/devcontainer.json
-                    - images: web3-dev
-                      tag: latest,nightly
+                    - image: web3-dev
+                      tags: latest
                       config: .devcontainer/devcontainer.json
-                    - images: ultralytics
-                      tag: latest,nightly
+                    - image: ultralytics
+                      tags: latest
                       config: .devcontainer/devcontainer.json
+                      large: true
         steps:
             - uses: actions/checkout@v4
 
             - uses: rokibhasansagar/slimhub_actions@a28a11a35d81967c82448c183cb17a34b7514a9a
+              if: matrix.large
               with:
                   retain: "docker_buildkit,container_tools,nodejs_npm"
 
@@ -65,7 +67,7 @@ jobs:
             # to avoid github package return 429 ratelimit error
             - name: Set docker upload concurrent
               run: |
-                  echo $'{"max-concurrent-uploads": 1}' | sudo dd status=none of=/etc/docker/daemon.json
+                  echo $'{"max-concurrent-uploads": 2}' | sudo dd status=none of=/etc/docker/daemon.json
                   sudo service docker restart
 
             - name: Log in to the Container registry
@@ -80,29 +82,50 @@ jobs:
               run: |
                   npm install --ignore-scripts -g @devcontainers/cli
 
-            # - name: Pre-build dev container image - ${{ matrix.images }}
-            #   run: |
-            #     set -x
-            #     cd images/src/${{ matrix.images }}
+            - name: Pre-build dev container image - ${{ matrix.image }}
+              run: |
+                  set -x
+                  cd images/src/${{ matrix.image }}
 
-            #     IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}"
-            #     devcontainer build \
-            #       --workspace-folder . \
-            #       --config .devcontainer/devcontainer.json \
-            #       --log-level debug \
-            #       --cache-from "$IMAGE_NAME" --image-name "$IMAGE_NAME" \
-            #       --push true
-            #   env:
-            #     # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #     DOCKER_BUILDKIT: "1"
-            #     COMPOSE_DOCKER_CLI_BUILD: "1"
+                  IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.image }}"
+                  devcontainer build \
+                    --workspace-folder . \
+                    --config .devcontainer/devcontainer.json \
+                    --log-level debug \
+                    --cache-from "$IMAGE_NAME" --image-name "$IMAGE_NAME" \
+                    --push false
+              env:
+                  # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  DOCKER_BUILDKIT: "1"
+                  COMPOSE_DOCKER_CLI_BUILD: "1"
 
-            - name: Pre-build dev container image - devcontainers-images-${{ matrix.images }}:(${{ matrix.tag }}) - ${{ matrix.config }}
-              uses: devcontainers/ci@v0.3
-              with:
-                  subFolder: images/src/${{ matrix.images }}
-                  configFile: images/src/${{ matrix.images }}/${{ matrix.config }}
-                  imageName: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
-                  cacheFrom: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.images }}
-                  push: always
-                  imageTag: ${{ matrix.tag }}
+            - name: "Info"
+              run: |
+                  set -x
+                  IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.image }}"
+
+                  docker images
+                  docker inspect "$IMAGE_NAME:latest"
+                  docker history "$IMAGE_NAME:latest"
+
+            - name: "Push"
+              run: |
+                  set -x
+                  IMAGE_NAME="${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.image }}"
+
+                  IFS=','
+                  read -ra tags <<< "${{ matrix.tags }}"
+                  for tag in "${tags[@]}"; do
+                    docker tag "$IMAGE_NAME:latest" "$IMAGE_NAME:$tag"
+                    docker push "$IMAGE_NAME:$tag"
+                  done
+
+            # - name: Pre-build dev container image - devcontainers-images-${{ matrix.image }}:(${{ matrix.tags }}) - ${{ matrix.config }}
+            #   uses: devcontainers/ci@v0.3
+            #   with:
+            #       subFolder: images/src/${{ matrix.image }}
+            #       configFile: images/src/${{ matrix.image }}/${{ matrix.config }}
+            #       imageName: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.image }}
+            #       cacheFrom: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainers-images-${{ matrix.image }}
+            #       push: always
+            #       imageTag: ${{ matrix.tags }}
