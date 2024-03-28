@@ -9,7 +9,7 @@
         "ghcr.io/hellodword/devcontainer/common": {},
         "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/hellodword/devcontainer/pip-dep": {
-            "deps": "ultralytics"
+            "deps": "ultralytics onnx onnxruntime onnxconverter-common sahi tflite-runtime tensorflow"
         }
     },
     "customizations": {
