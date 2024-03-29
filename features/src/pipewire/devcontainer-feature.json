@@ -1,0 +1,26 @@
+{
+    "name": "Pipewire",
+    "id": "pipewire",
+    "version": "1.0.0",
+    "description": "- Install pipewire and ffmpeg.\n\n- `\"runArgs\": [ \"--device\", \"/dev/snd\" ]` is **required**.\n\n",
+    "containerEnv": {
+        // https://stackoverflow.com/a/75776428
+        "PIPEWIRE_RUNTIME_DIR": "/tmp"
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/hellodword/devcontainer/common"
+    ],
+    "mounts": [
+        {
+            "source": "/run/user/1000/pipewire-0",
+            "target": "/tmp/pipewire-0",
+            "type": "bind"
+        }
+        // {
+        //     "source": "/dev/snd",
+        //     "target": "/dev/snd",
+        //     "type": "bind"
+        // }
+    ]
+}

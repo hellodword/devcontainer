@@ -19,6 +19,7 @@ on:
             - "features/src/zig/devcontainer-feature.json"
             - "features/src/pip-dep/devcontainer-feature.json"
             - "features/src/solana/devcontainer-feature.json"
+            - "features/src/pipewire/devcontainer-feature.json"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
@@ -48,6 +49,7 @@ jobs:
                     - zig
                     - pip-dep
                     - solana
+                    - pipewire
         steps:
             - uses: actions/checkout@v4
 
