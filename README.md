@@ -137,6 +137,20 @@ crw-rw----+ 1 root adbusers 189, 270 Feb 29 05:30 /dev/bus/usb/003/015
 -   https://containers.dev/implementors/reference/#labels
     -   `devcontainer.metadata` 并不支持 `runArgs` 和 `initializeCommand`
 
+## docker-compose
+
+-   cached volume 修改后容易不生效，删除所有相关容器、镜像、volume 后重试
+
+## generate-docs
+
+-   https://github.com/devcontainers/cli/pull/759
+-   https://github.com/devcontainers/cli/pull/788
+
+```sh
+devcontainer features generate-docs --project-folder features/src --namespace hellodword/devcontainer --github-owner hellodword --github-repo devcontainer
+devcontainer templates generate-docs --project-folder templates/src --github-owner hellodword --github-repo devcontainer
+```
+
 ## TODO
 
 -   [ ] architectures
