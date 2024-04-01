@@ -11,6 +11,7 @@ DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
         software-properties-common \
         jq file \
         aria2 \
-        apt-file &&
+        apt-file \
+        fd-find ripgrep &&
     sudo apt-file update &&
     sudo apt-get clean
