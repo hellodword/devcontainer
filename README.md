@@ -147,8 +147,11 @@ crw-rw----+ 1 root adbusers 189, 270 Feb 29 05:30 /dev/bus/usb/003/015
 -   https://github.com/devcontainers/cli/pull/788
 
 ```sh
-devcontainer features generate-docs --project-folder features/src --namespace hellodword/devcontainer --github-owner hellodword --github-repo devcontainer
-devcontainer templates generate-docs --project-folder templates/src --github-owner hellodword --github-repo devcontainer
+devcontainer features generate-docs     \
+    --project-folder features/src       \
+    --namespace hellodword/devcontainer \
+    --github-owner hellodword           \
+    --github-repo devcontainer
 ```
 
 ## TODO
