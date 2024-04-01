@@ -15,3 +15,5 @@ DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
         fd-find ripgrep &&
     sudo apt-file update &&
     sudo apt-get clean
+
+ln -s $(which fdfind) $(dirname $(which fdfind))/fd
