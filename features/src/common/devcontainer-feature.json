@@ -1,7 +1,7 @@
 {
     "name": "Common",
     "id": "common",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "description": "common tools and setups",
     "containerEnv": {
         "GOTOOLCHAIN": "local",
@@ -21,6 +21,7 @@
                 "editor.formatOnType": false,
                 "editor.wordWrap": "on",
                 "editor.formatOnSave": true,
+                "editor.tabSize": 2,
                 // privacy & update
                 "telemetry.enableTelemetry": false,
                 "telemetry.telemetryLevel": "off",
