@@ -58,6 +58,7 @@ jobs:
                     - vala
                     - maven-dep
                     - pip-dep
+                    - cuda
         steps:
             - name: prepare 1000:1000
               run: |

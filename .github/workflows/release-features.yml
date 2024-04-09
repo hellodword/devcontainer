@@ -20,6 +20,7 @@ on:
             - "features/src/pip-dep/devcontainer-feature.json"
             - "features/src/solana/devcontainer-feature.json"
             - "features/src/pipewire/devcontainer-feature.json"
+            - "features/src/cuda/devcontainer-feature.json"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
@@ -50,6 +51,7 @@ jobs:
                     - pip-dep
                     - solana
                     - pipewire
+                    - cuda
         steps:
             - uses: actions/checkout@v4
 
