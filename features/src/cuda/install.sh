@@ -30,7 +30,7 @@ DEBIAN_FRONTEND="noninteractive" apt-get update &&
         ${NV_LIBCUBLAS_DEV_PACKAGE} \
         ${NV_LIBNCCL_DEV_PACKAGE} \
         ${NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE} \
-        opencl-headers ocl-icd-opencl-dev \
+        opencl-headers ocl-icd-opencl-dev clinfo \
     && rm -rf /var/lib/apt/lists/*
 
 # Required for nvidia-docker v1
@@ -42,3 +42,7 @@ apt-mark hold ${NV_LIBCUBLAS_PACKAGE_NAME} ${NV_LIBNCCL_PACKAGE_NAME}
 
 # Keep apt from auto upgrading the cublas and nccl packages. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
 apt-mark hold ${NV_LIBCUBLAS_DEV_PACKAGE_NAME} ${NV_LIBNCCL_DEV_PACKAGE_NAME}
+
+# for docker
+mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
