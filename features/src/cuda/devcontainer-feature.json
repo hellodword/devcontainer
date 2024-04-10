@@ -1,7 +1,7 @@
 {
     "name": "CUDA",
     "id": "cuda",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "CUDA and OpenCL",
     "containerEnv": {
         "NVARCH": "x86_64",
@@ -46,7 +46,11 @@
     "installsAfter": ["ghcr.io/devcontainers/features/common-utils"],
     "customizations": {
         "vscode": {
-            "extensions": [],
+            "extensions": [
+                "galarius.vscode-opencl",
+                "ms-vscode.cpptools-extension-pack",
+                "nvidia.nsight-vscode-edition"
+            ],
             "settings": {
                 "files.associations": {
                     "*.cl": "OpenCL"
