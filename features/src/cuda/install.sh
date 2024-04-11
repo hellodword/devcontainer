@@ -8,6 +8,8 @@ set -x
 curl -fsSLO https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/${NVARCH}/cuda-keyring_1.1-1_all.deb && \
     dpkg -i cuda-keyring_1.1-1_all.deb && rm -rf cuda-keyring_1.1-1_all.deb
 
+sudo add-apt-repository -y ppa:ocl-icd/ppa
+
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
 DEBIAN_FRONTEND="noninteractive" apt-get update &&
     apt-get install --no-install-recommends -y \
@@ -30,7 +32,14 @@ DEBIAN_FRONTEND="noninteractive" apt-get update &&
         ${NV_LIBCUBLAS_DEV_PACKAGE} \
         ${NV_LIBNCCL_DEV_PACKAGE} \
         ${NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE} \
-        opencl-headers ocl-icd-opencl-dev clinfo \
+        opencl-headers clinfo \
+        ocl-icd-libopencl1 ocl-icd-opencl-dev ocl-icd-dev \
+        python3-dev libpython3-dev build-essential ocl-icd-libopencl1 \
+        cmake git pkg-config libclang-${LLVM_VERSION}-dev clang-${LLVM_VERSION} \
+        llvm-${LLVM_VERSION} make ninja-build ocl-icd-libopencl1 ocl-icd-dev \
+        ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils \
+        libxml2-dev libclang-cpp${LLVM_VERSION}-dev libclang-cpp${LLVM_VERSION} \
+        llvm-${LLVM_VERSION}-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Required for nvidia-docker v1
@@ -46,3 +55,20 @@ apt-mark hold ${NV_LIBCUBLAS_DEV_PACKAGE_NAME} ${NV_LIBNCCL_DEV_PACKAGE_NAME}
 # for docker
 mkdir -p /etc/OpenCL/vendors && \
     echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+
+# install the latest pocl
+pushd /tmp
+# avoid using github api which has rate limit, especially with VPN
+REPO="pocl/pocl"
+LATEST_VERSION="$(curl -fsS -w "%{redirect_url}" -o /dev/null "https://github.com/$REPO/releases/latest" | grep -oP '(?<=/releases/tag/)[^/]+$')"
+[ -n "$LATEST_VERSION" ]
+git clone -b "$LATEST_VERSION" --depth=1 --recurse-submodules https://github.com/pocl/pocl
+cd pocl
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo cp pocl.icd /etc/OpenCL/vendors/pocl.icd
+popd
+rm -rf /tmp/pocl
