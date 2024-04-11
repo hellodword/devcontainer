@@ -10,6 +10,8 @@ curl -fsSLO https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/
 
 sudo add-apt-repository -y ppa:ocl-icd/ppa
 
+# for pocl
+export LLVM_VERSION=14
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
 DEBIAN_FRONTEND="noninteractive" apt-get update &&
     apt-get install --no-install-recommends -y \
