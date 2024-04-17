@@ -42,6 +42,9 @@ DEBIAN_FRONTEND="noninteractive" apt-get update &&
         ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils \
         libxml2-dev libclang-cpp${LLVM_VERSION}-dev libclang-cpp${LLVM_VERSION} \
         llvm-${LLVM_VERSION}-dev \
+        g++ cmake ninja-build \
+        llvm-15-dev libz-dev libglew-dev \
+        flex bison libfl-dev libboost-thread-dev libboost-filesystem-dev nvidia-cuda-toolkit-gcc libzstd-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Required for nvidia-docker v1
