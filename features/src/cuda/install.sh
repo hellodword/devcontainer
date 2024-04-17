@@ -12,25 +12,26 @@ sudo add-apt-repository -y ppa:ocl-icd/ppa
 
 # for pocl
 export LLVM_VERSION=14
+_CUDA_VERSION_PREFIX=$(echo "${CUDA_VERSION}" | awk -F. '{print $1 "-" $2}')
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
 apt-get update &&
 DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
-        cuda-cudart-12-4=${NV_CUDA_CUDART_VERSION} \
+        cuda-cudart-${_CUDA_VERSION_PREFIX}=${NV_CUDA_CUDART_VERSION} \
         ${NV_CUDA_COMPAT_PACKAGE} \
-        cuda-libraries-12-4=${NV_CUDA_LIB_VERSION} \
+        cuda-libraries-${_CUDA_VERSION_PREFIX}=${NV_CUDA_LIB_VERSION} \
         ${NV_LIBNPP_PACKAGE} \
-        cuda-nvtx-12-4=${NV_NVTX_VERSION} \
-        libcusparse-12-4=${NV_LIBCUSPARSE_VERSION} \
+        cuda-nvtx-${_CUDA_VERSION_PREFIX}=${NV_NVTX_VERSION} \
+        libcusparse-${_CUDA_VERSION_PREFIX}=${NV_LIBCUSPARSE_VERSION} \
         ${NV_LIBCUBLAS_PACKAGE} \
         ${NV_LIBNCCL_PACKAGE} \
-        cuda-cudart-dev-12-4=${NV_CUDA_CUDART_DEV_VERSION} \
-        cuda-command-line-tools-12-4=${NV_CUDA_LIB_VERSION} \
-        cuda-minimal-build-12-4=${NV_CUDA_LIB_VERSION} \
-        cuda-libraries-dev-12-4=${NV_CUDA_LIB_VERSION} \
-        cuda-nvml-dev-12-4=${NV_NVML_DEV_VERSION} \
+        cuda-cudart-dev-${_CUDA_VERSION_PREFIX}=${NV_CUDA_CUDART_DEV_VERSION} \
+        cuda-command-line-tools-${_CUDA_VERSION_PREFIX}=${NV_CUDA_LIB_VERSION} \
+        cuda-minimal-build-${_CUDA_VERSION_PREFIX}=${NV_CUDA_LIB_VERSION} \
+        cuda-libraries-dev-${_CUDA_VERSION_PREFIX}=${NV_CUDA_LIB_VERSION} \
+        cuda-nvml-dev-${_CUDA_VERSION_PREFIX}=${NV_NVML_DEV_VERSION} \
         ${NV_NVPROF_DEV_PACKAGE} \
         ${NV_LIBNPP_DEV_PACKAGE} \
-        libcusparse-dev-12-4=${NV_LIBCUSPARSE_DEV_VERSION} \
+        libcusparse-dev-${_CUDA_VERSION_PREFIX}=${NV_LIBCUSPARSE_DEV_VERSION} \
         ${NV_LIBCUBLAS_DEV_PACKAGE} \
         ${NV_LIBNCCL_DEV_PACKAGE} \
         ${NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE} \
