@@ -13,8 +13,8 @@ sudo add-apt-repository -y ppa:ocl-icd/ppa
 # for pocl
 export LLVM_VERSION=14
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
-DEBIAN_FRONTEND="noninteractive" apt-get update &&
-    apt-get install --no-install-recommends -y \
+apt-get update &&
+DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
         cuda-cudart-12-4=${NV_CUDA_CUDART_VERSION} \
         ${NV_CUDA_COMPAT_PACKAGE} \
         cuda-libraries-12-4=${NV_CUDA_LIB_VERSION} \
@@ -41,11 +41,7 @@ DEBIAN_FRONTEND="noninteractive" apt-get update &&
         llvm-${LLVM_VERSION} make ninja-build ocl-icd-libopencl1 ocl-icd-dev \
         ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils \
         libxml2-dev libclang-cpp${LLVM_VERSION}-dev libclang-cpp${LLVM_VERSION} \
-        llvm-${LLVM_VERSION}-dev \
-        g++ cmake ninja-build \
-        llvm-15-dev libz-dev libglew-dev \
-        flex bison libfl-dev libboost-thread-dev libboost-filesystem-dev nvidia-cuda-toolkit-gcc libzstd-dev \
-    && rm -rf /var/lib/apt/lists/*
+        llvm-${LLVM_VERSION}-dev
 
 # Required for nvidia-docker v1
 echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf \
@@ -77,3 +73,9 @@ sudo make install
 sudo cp pocl.icd /etc/OpenCL/vendors/pocl.icd
 popd
 rm -rf /tmp/pocl
+
+
+DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
+    g++ cmake ninja-build \
+    llvm-15-dev libz-dev libglew-dev \
+    flex bison libfl-dev libboost-thread-dev libboost-filesystem-dev nvidia-cuda-toolkit-gcc libzstd-dev
