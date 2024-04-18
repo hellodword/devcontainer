@@ -9,8 +9,9 @@ URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-1040699
 [ -n "$JAVA_HOME" ]
 [ "$(javac --version | grep -oP '(?<=javac\s)\d+')" = "17" ]
 
-DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
-    sudo apt-get install --no-install-recommends -y unzip wget usbutils &&
+sudo apt-get update &&
+    DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y \
+        unzip wget usbutils &&
     sudo apt-get clean
 
 # Prepare install folder.

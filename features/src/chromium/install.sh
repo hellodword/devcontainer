@@ -4,8 +4,8 @@ set +H
 set -x
 
 # ldd `which chrome` | grep -i found | awk '{print $1}' | xargs -I {} bash -c 'echo finding {}; apt-file search {}'
-DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
-    sudo apt-get install --no-install-recommends -y \
+sudo apt-get update &&
+    DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y \
         unzip wget curl \
         fonts-noto fonts-noto-cjk \
         libglib2.0-0 libnss3 libdbus-1-3 \

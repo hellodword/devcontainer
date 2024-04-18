@@ -4,8 +4,8 @@ set +H
 set -x
 
 yes | sudo add-apt-repository ppa:vala-team/daily
-DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
-    sudo apt-get install --no-install-recommends -y \
+sudo apt-get update &&
+    DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y \
         meson valac libvala-0.58-dev libjsonrpc-glib-1.0-dev libgee-0.8-dev &&
     sudo apt-get clean
 

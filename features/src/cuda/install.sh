@@ -6,7 +6,7 @@ set -x
 # https://gitlab.com/nvidia/container-images/cuda/-/tree/9dd7f6b0495ba3ab3a9424dd7124f979a2221593/dist/12.4.0/ubuntu2204
 
 curl -fsSLO https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/${NVARCH}/cuda-keyring_1.1-1_all.deb && \
-    dpkg -i cuda-keyring_1.1-1_all.deb && rm -rf cuda-keyring_1.1-1_all.deb
+    sudo dpkg -i cuda-keyring_1.1-1_all.deb && rm -rf cuda-keyring_1.1-1_all.deb
 
 sudo add-apt-repository -y ppa:ocl-icd/ppa
 
@@ -14,8 +14,8 @@ sudo add-apt-repository -y ppa:ocl-icd/ppa
 export LLVM_VERSION=14
 _CUDA_VERSION_PREFIX=$(echo "${CUDA_VERSION}" | awk -F. '{print $1 "-" $2}')
 # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
-apt-get update &&
-DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
+sudo apt-get update &&
+    DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y \
         cuda-cudart-${_CUDA_VERSION_PREFIX}=${NV_CUDA_CUDART_VERSION} \
         ${NV_CUDA_COMPAT_PACKAGE} \
         cuda-libraries-${_CUDA_VERSION_PREFIX}=${NV_CUDA_LIB_VERSION} \
@@ -45,18 +45,18 @@ DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
         llvm-${LLVM_VERSION}-dev
 
 # Required for nvidia-docker v1
-echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf \
-    && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+echo "/usr/local/nvidia/lib" | sudo tee -a /etc/ld.so.conf.d/nvidia.conf \
+    && echo "/usr/local/nvidia/lib64" | sudo tee -a /etc/ld.so.conf.d/nvidia.conf
 
 # Keep apt from auto upgrading the cublas and nccl packages. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
-apt-mark hold ${NV_LIBCUBLAS_PACKAGE_NAME} ${NV_LIBNCCL_PACKAGE_NAME}
+sudo apt-mark hold ${NV_LIBCUBLAS_PACKAGE_NAME} ${NV_LIBNCCL_PACKAGE_NAME}
 
 # Keep apt from auto upgrading the cublas and nccl packages. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
-apt-mark hold ${NV_LIBCUBLAS_DEV_PACKAGE_NAME} ${NV_LIBNCCL_DEV_PACKAGE_NAME}
+sudo apt-mark hold ${NV_LIBCUBLAS_DEV_PACKAGE_NAME} ${NV_LIBNCCL_DEV_PACKAGE_NAME}
 
 # for docker
-mkdir -p /etc/OpenCL/vendors && \
-    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+sudo mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" | sudo tee /etc/OpenCL/vendors/nvidia.icd
 
 # install the latest pocl
 pushd /tmp
@@ -76,7 +76,8 @@ popd
 rm -rf /tmp/pocl
 
 
-DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
+DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y \
     g++ cmake ninja-build \
     llvm-15-dev libz-dev libglew-dev \
     flex bison libfl-dev libboost-thread-dev libboost-filesystem-dev nvidia-cuda-toolkit-gcc libzstd-dev
+sudo apt-get clean

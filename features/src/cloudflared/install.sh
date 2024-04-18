@@ -3,8 +3,8 @@ set -e
 set +H
 set -x
 
-DEBIAN_FRONTEND="noninteractive" sudo apt-get update &&
-    sudo apt-get install --no-install-recommends -y curl &&
+sudo apt-get update &&
+    DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y curl &&
     sudo apt-get clean
 
 mkdir -p /usr/local/bin
