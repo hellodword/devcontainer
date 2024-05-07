@@ -18,10 +18,12 @@ echo "Extracting Zig ${LATEST_VERSION}..."
 tar -xf /tmp/zig.tar.xz -C "$ZIG_ROOT" --strip-components=1
 rm -rf /tmp/zig.tar.xz
 
-curl -fsSL --output /tmp/zls-x86_64-linux.tar.gz "https://github.com/zigtools/zls/releases/download/$LATEST_VERSION/zls-x86_64-linux.tar.gz"
+# https://github.com/zigtools/zls/issues/1879
+curl -fsSL --output /tmp/zls-x86_64-linux.tar.xz \
+    "https://github.com/zigtools/zls/releases/download/$LATEST_VERSION/zls-x86_64-linux.tar.xz"
 
 mkdir -p "/usr/local/zls"
 echo "Extracting zls ${LATEST_VERSION}..."
-tar -xzf /tmp/zls-x86_64-linux.tar.gz -C /usr/local/zls --strip-components=1
-chmod +x /usr/local/zls/bin/zls
-rm -rf /tmp/zls-x86_64-linux.tar.gz
+tar -xf /tmp/zls-x86_64-linux.tar.xz -C /usr/local/zls
+chmod +x /usr/local/zls/zls
+rm -rf /tmp/zls-x86_64-linux.tar.xz
