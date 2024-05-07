@@ -3,7 +3,8 @@ set -e
 set +H
 set -x
 
-URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip"
+# https://github.com/tadfisher/android-nixpkgs/blob/2d8181caef279f19c4a33dc694723f89ffc195d4/channels/stable/default.nix#L2689-L2697
+URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-11391160_latest.zip"
 
 # check java version
 [ -n "$JAVA_HOME" ]
