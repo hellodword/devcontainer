@@ -47,9 +47,9 @@ jobs:
                     - image: unidbg
                       tags: latest
                       config: .devcontainer/devcontainer.json
-                    - image: web3-dev
-                      tags: latest
-                      config: .devcontainer/devcontainer.json
+                    # - image: web3-dev
+                    #   tags: latest
+                    #   config: .devcontainer/devcontainer.json
                     - image: ultralytics
                       tags: latest
                       config: .devcontainer/devcontainer.json
