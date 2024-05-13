@@ -58,6 +58,9 @@ jobs:
                       tags: latest
                       config: .devcontainer/devcontainer.json
                       large: true
+                    - image: pyinfra
+                      tags: latest
+                      config: .devcontainer/devcontainer.json
         steps:
             - uses: actions/checkout@v4
 
