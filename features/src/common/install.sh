@@ -12,7 +12,7 @@ sudo apt-get update &&
         jq file \
         aria2 \
         apt-file \
-        fd-find ripgrep &&
+        fd-find ripgrep netcat &&
     sudo apt-file update &&
     sudo apt-get clean
 
