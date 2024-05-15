@@ -12,12 +12,14 @@ export HOME="$_REMOTE_USER_HOME"
 
 export PATH="$PATH:$FLUTTER_HOME/bin"
 
+echo 'source <(flutter bash-completion)' >> $_REMOTE_USER_HOME/.bashrc
+
 id
 whoami
 env
 
 
-curl -fsSL --output /tmp/flutter.tar.xz "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$FLUTTER_VERSION-stable.tar.xz"
+curl -fsSL --output /tmp/flutter.tar.xz "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$VERSION-stable.tar.xz"
 sudo tar xf /tmp/flutter.tar.xz -C "$FLUTTER_PARENT"
 rm /tmp/flutter.tar.xz
 
