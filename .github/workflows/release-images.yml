@@ -15,6 +15,7 @@ on:
             - "images/src/web3-dev/**"
             - "images/src/ultralytics/**"
             - "images/src/cuda/**"
+            - "images/src/haskell/**"
             - "features/**/devcontainer-feature.json"
 
 env:
