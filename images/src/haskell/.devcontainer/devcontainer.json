@@ -5,5 +5,18 @@
         "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},
         "ghcr.io/devcontainers-contrib/features/haskell:2": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": ["haskell.haskell"],
+            "settings": {
+                "haskell.toolchain": {
+                    "stack": null,
+                    "ghc": null,
+                    "cabal": null,
+                    "hls": null
+                }
+            }
+        }
     }
 }
