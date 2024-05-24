@@ -22,6 +22,7 @@ jobs:
                     - web3-dev
                     - ultralytics
                     - pyinfra
+                    - haskell
         steps:
             - name: prepare 1000:1000
               run: |
