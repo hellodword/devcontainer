@@ -68,10 +68,17 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
-            - uses: rokibhasansagar/slimhub_actions@a28a11a35d81967c82448c183cb17a34b7514a9a
+            - uses: AdityaGarg8/remove-unwanted-software@3ccb44bee98b5232ab087e2bb23a5d8b14043223
               if: matrix.large
               with:
-                  retain: "docker_buildkit,container_tools,nodejs_npm"
+                  remove-dotnet: "true"
+                  remove-android: "true"
+                  remove-haskell: "true"
+                  remove-codeql: "true"
+                  remove-docker-images: "false"
+                  remove-large-packages: "false"
+                  remove-cached-tools: "true"
+                  remove-swapfile: "false"
 
             # https://github.com/orgs/community/discussions/42479#discussioncomment-4484937
             # https://github.com/wph95/opentelemetry-demo-webstore/blob/ae08811157db7ba590a7c8dd6faa2cb9d1473bef/.github/workflows/release.yml#L24-L29

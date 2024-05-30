@@ -14,15 +14,18 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                images:
-                    - flutter
-                    - go
-                    - go-and-node
-                    - unidbg
-                    - web3-dev
-                    - ultralytics
-                    - pyinfra
-                    - haskell
+                include:
+                    - image: flutter
+                    - image: go
+                    - image: go-and-node
+                    - image: unidbg
+                    - image: web3-dev
+                    - image: ultralytics
+                      large: true
+                    - image: cuda
+                      large: true
+                    - image: pyinfra
+                    - image: haskell
         steps:
             - name: prepare 1000:1000
               run: |
@@ -34,9 +37,17 @@ jobs:
 
             - uses: actions/checkout@v4
 
-            - uses: rokibhasansagar/slimhub_actions@a28a11a35d81967c82448c183cb17a34b7514a9a
+            - uses: AdityaGarg8/remove-unwanted-software@3ccb44bee98b5232ab087e2bb23a5d8b14043223
+              if: matrix.large
               with:
-                  retain: "docker_buildkit,container_tools,nodejs_npm"
+                  remove-dotnet: "true"
+                  remove-android: "true"
+                  remove-haskell: "true"
+                  remove-codeql: "true"
+                  remove-docker-images: "false"
+                  remove-large-packages: "false"
+                  remove-cached-tools: "true"
+                  remove-swapfile: "false"
 
             - name: prepare for tests
               run: |
@@ -46,7 +57,7 @@ jobs:
             - name: "Install latest devcontainer CLI"
               run: sudo npm install --ignore-scripts -g @devcontainers/cli
 
-            - name: "Generating tests for '${{ matrix.images }}'"
+            - name: "Generating tests for '${{ matrix.image }}'"
               run: |
-                  cd images/src/${{ matrix.images }}
-                  sudo devcontainer build --workspace-folder . --image-name ${{ matrix.images }}
+                  cd images/src/${{ matrix.image }}
+                  sudo devcontainer build --workspace-folder . --image-name ${{ matrix.image }}
