@@ -158,3 +158,4 @@ devcontainer features generate-docs     \
 
 -   [ ] architectures
 -   [ ] distros
+-   [ ] reproducible: This must be considered, or it will be a complete mess.
