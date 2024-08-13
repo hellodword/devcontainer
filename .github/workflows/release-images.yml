@@ -16,6 +16,7 @@ on:
             - "images/src/ultralytics/**"
             - "images/src/cuda/**"
             - "images/src/haskell/**"
+            - "images/src/frida/**"
             - "features/**/devcontainer-feature.json"
 
 env:
@@ -63,6 +64,9 @@ jobs:
                       tags: latest
                       config: .devcontainer/devcontainer.json
                     - image: haskell
+                      tags: latest
+                      config: .devcontainer/devcontainer.json
+                    - image: frida
                       tags: latest
                       config: .devcontainer/devcontainer.json
         steps:
