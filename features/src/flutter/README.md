@@ -19,7 +19,7 @@ cpp image is **required** for cmake.
         // Allow USB in container
         "--device-cgroup-rule", "c 189:* rmw"
     ],
-    "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"
+    "initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android; cp $HOME/.android/adbkey ${localWorkspaceFolder}/.mount/.android/adbkey && cp $HOME/.android/adbkey.pub ${localWorkspaceFolder}/.mount/.android/adbkey.pub"
 }
 ```
 
@@ -31,7 +31,11 @@ cpp image is **required** for cmake.
 }
 ```
 
+## Options
 
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| version | flutter version | string | 3.16.9 |
 
 ## Customizations
 

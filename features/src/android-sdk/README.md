@@ -3,7 +3,7 @@
 
 - Install Android SDK `cmdline-tools`, `platform-tools`, `ndk` and, `build-tools`.
 
-- The ~/.android will persisted in .mount/.android and `"initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android"` is **required**.
+- The ~/.android will persisted in .mount/.android and `"initializeCommand": "mkdir -p ${localWorkspaceFolder}/.mount/.android; cp $HOME/.android/adbkey ${localWorkspaceFolder}/.mount/.android/adbkey && cp $HOME/.android/adbkey.pub ${localWorkspaceFolder}/.mount/.android/adbkey.pub"` is **required**.
 
 - `"runArgs": [ "--device-cgroup-rule", "c 189:* rmw" ]` is **required** for usb.
 

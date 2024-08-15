@@ -13,6 +13,14 @@ CUDA and OpenCL
 
 
 
+## Customizations
+
+### VS Code Extensions
+
+- `galarius.vscode-opencl`
+- `ms-vscode.cpptools-extension-pack`
+- `nvidia.nsight-vscode-edition`
+
 
 
 ---
