@@ -1,19 +1,21 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-    "features": {
-        "ghcr.io/devcontainers/features/node:1": {},
-        "ghcr.io/hellodword/devcontainer/common:1": {},
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  "image": "mcr.microsoft.com/devcontainers/base:debian-12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nodeGypDependencies": true,
+      "installYarnUsingApt": false
     },
-    "postCreateCommand": "npm install --ignore-scripts -g @devcontainers/cli",
-    "hostRequirements": {
-        "cpus": 4
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "mads-hartmann.bash-ide-vscode"
-            ]
-        }
+    "ghcr.io/hellodword/devcontainer/common:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "npm install --ignore-scripts -g @devcontainers/cli", 
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["mads-hartmann.bash-ide-vscode"]
     }
+  }
 }
