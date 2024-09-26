@@ -1,6 +1,6 @@
 {
     "name": "Haskell Prebuilt Devcontainer Image",
-    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "image": "mcr.microsoft.com/devcontainers/cpp:debian-12",
     "features": {
         "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},

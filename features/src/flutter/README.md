@@ -5,7 +5,7 @@ cpp image is **required** for cmake.
 
 ```json
 {
-    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "image": "mcr.microsoft.com/devcontainers/cpp:debian-12",
     "features": {
         "ghcr.io/hellodword/devcontainer/common:1": {},
         "ghcr.io/hellodword/devcontainer/common-gui:1": {},

@@ -1,6 +1,6 @@
 {
     "name": "pyinfra Prebuilt Devcontainer Image",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    "image": "mcr.microsoft.com/devcontainers/base:debian-12",
     "features": {
         "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},

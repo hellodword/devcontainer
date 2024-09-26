@@ -8,7 +8,9 @@ set -x
 curl -fsSLO https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/${NVARCH}/cuda-keyring_1.1-1_all.deb && \
     sudo dpkg -i cuda-keyring_1.1-1_all.deb && rm -rf cuda-keyring_1.1-1_all.deb
 
-sudo add-apt-repository -y ppa:ocl-icd/ppa
+sudo apt-get update && \
+    DEBIAN_FRONTEND="noninteractive" sudo apt-get install -y software-properties-common python3-launchpadlib && \
+    sudo add-apt-repository -y ppa:ocl-icd/ppa
 
 # for pocl
 export LLVM_VERSION=14

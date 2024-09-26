@@ -1,6 +1,6 @@
 {
     "specific_sdk": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+        "image": "mcr.microsoft.com/devcontainers/base:debian-12",
         "features": {
             "debug-comments": {}
         }

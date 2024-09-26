@@ -3,7 +3,11 @@ set -e
 set +H
 set -x
 
-yes | sudo add-apt-repository ppa:vala-team/daily
+if [ "$(awk -F= '/DISTRIB_ID/ {print $2}' /etc/lsb-release)" = "Ubuntu" ]; then
+    sudo apt-get update && \
+        DEBIAN_FRONTEND="noninteractive" sudo apt-get install -y software-properties-common python3-launchpadlib && \
+        yes | sudo add-apt-repository -y ppa:vala-team/daily
+fi
 sudo apt-get update &&
     DEBIAN_FRONTEND="noninteractive" sudo apt-get install --no-install-recommends -y \
         meson valac libvala-0.58-dev libjsonrpc-glib-1.0-dev libgee-0.8-dev &&

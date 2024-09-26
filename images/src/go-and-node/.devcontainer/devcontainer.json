@@ -1,11 +1,15 @@
 {
     "name": "Go And Node Prebuilt Devcontainer Image",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    "image": "mcr.microsoft.com/devcontainers/base:debian-12",
     "features": {
         "ghcr.io/devcontainers/features/common-utils": {},
         "ghcr.io/hellodword/devcontainer/common": {},
         "ghcr.io/devcontainers/features/go:1": {},
-        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts",
+            "nodeGypDependencies": true,
+            "installYarnUsingApt": false
+        },
         "ghcr.io/hellodword/devcontainer/k6": {}
     },
     "customizations": {

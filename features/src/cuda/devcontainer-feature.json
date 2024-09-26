@@ -1,7 +1,7 @@
 {
     "name": "CUDA",
     "id": "cuda",
-    "version": "1.0.9",
+    "version": "1.0.11",
     "description": "CUDA and OpenCL",
     "containerEnv": {
         "NVARCH": "x86_64",

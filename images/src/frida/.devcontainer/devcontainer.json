@@ -1,12 +1,14 @@
 {
     "name": "Frida Prebuilt Devcontainer Image",
-    "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+    "image": "mcr.microsoft.com/devcontainers/cpp:debian-12",
     "features": {
         "ghcr.io/hellodword/devcontainer/common:1": {},
         "ghcr.io/devcontainers/features/go:1": {},
         "ghcr.io/devcontainers/features/node:1": {
             // for frida 14 (@types/frida-gum@17 and frida-compile@10)
-            "version": "16"
+            "version": "16",
+            "nodeGypDependencies": true,
+            "installYarnUsingApt": false
         },
         "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/devcontainers/features/java:1": {

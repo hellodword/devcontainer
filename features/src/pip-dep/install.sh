@@ -4,14 +4,12 @@ set +H
 set -x
 
 
-sudo -Eu "$_REMOTE_USER" bash -ex << EOF
+su - "$_REMOTE_USER" bash -c '
+env
 
 # check pip version
 pip -V
 
-# fix HOME rewrited by sudo -E
-export HOME="$_REMOTE_USER_HOME"
-
 bash -c "pip install $DEPS"
-rm -rf "$_REMOTE_USER_HOME/.cache/pip"
-EOF
+rm -rf ~/.cache/pip
+'

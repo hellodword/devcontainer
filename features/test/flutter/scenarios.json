@@ -1,6 +1,6 @@
 {
     "specific_sdk": {
-        "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+        "image": "mcr.microsoft.com/devcontainers/cpp:debian-12",
         "features": {
             "common": {},
             "common-gui": {},
