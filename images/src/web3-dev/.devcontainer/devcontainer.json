@@ -11,6 +11,7 @@
             "installYarnUsingApt": false
         },
         "ghcr.io/devcontainers/features/rust:1": {},
+        "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/hellodword/devcontainer/k6": {},
         "ghcr.io/hellodword/devcontainer/solana": {}
     },
